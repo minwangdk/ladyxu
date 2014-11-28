@@ -1,8 +1,17 @@
 <?php
+//put in common.php
+header('Content-Type: text/html; charset=utf-8'); 
+
+// no cache
+header("Expires: 0");
+header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+header("Cache-Control: no-store, no-cache, must-revalidate");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+
 require_once '_class/Database.php';
 require_once '_class/Admin_page.php';
 $admin = new Admin_page;
-
 
 // AUTH
 $display_admin = FALSE;

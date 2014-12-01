@@ -1,26 +1,16 @@
 <?php 
 require_once '_admin_password.php';
 require_once '_class/Database.php';
-require_once '_class/Token.php';
-require_once '_class/IMG_uploader.php';
+require_once '_class/Image_transfer.php';
 
 
 class Admin_page 
-{
-	
+{	
 	private $admin_password = ADMIN_PASSWORD;
 
 	public function display_login()
 	{
 		return <<<LOGIN_FORM
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Admin Page</title>
- 	<link rel="stylesheet" href="stylesheets/admin.css">
-</head>
-<body>
 	<form action="" method="post">
 		<div>
 			<input type="password" name="password" />
@@ -53,18 +43,6 @@ LOGIN_FORM;
 		// Password checker		
 		if ($_POST['password'] === $this->admin_password)
 		{
-			try 
-			{
-				$token_gen = new Token;
-				$token = $token_gen->random_text(); 
-				$token_gen->set_token($token);
-				setcookie("token", $token, time()+86400, '/');
-			}
-			catch(Exception $e)
-	    {
-        echo $e->getMessage();
-	    }
-
 			return TRUE;
 		}
 		else
@@ -76,21 +54,12 @@ LOGIN_FORM;
       $db->execute();
 			return FALSE;
 		}
-
 	}
 
 	public function display_admin() 
 	{
 		return <<<FORM_MARKUP
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Admin Page</title>
- 	<link rel="stylesheet" href="stylesheets/admin.css">
-</head>
-<body>
-	<form action="" method="post" enctype="multipart/form-data">
+	<form name='newItem' action="" method="post" enctype="multipart/form-data">
 		<h1>新项目 New Item</h1>
 
 		<section>
@@ -98,14 +67,16 @@ LOGIN_FORM;
 
 			<p>
 				<label for="quality">
-				<span>质量</br>Quality:</span>
+				<span>纯度</br>Quality:</span>
 					<select id="quality" name="quality" >
 						<option selected disabled></option>
 					  <option value="999">.999 Fine</option>
 					  <option value="950">.950 French 1st standard</option>
+					  <option value="930">.930 Argentium</option>
 					  <option value="925">.925 Sterling</option>
 					  <option value="900">.900 Coin silver</option>
 					  <option value="850">.850 Continental</option>
+					  <option value="835">.835 Belgian</option>
 					  <option value="830">.830 Scandinavian</option>
 					  <option value="800">.800 German</option>
 					  <option value="silver">Silver</option>
@@ -139,7 +110,7 @@ LOGIN_FORM;
 
 			<p>
 				<label for="period">
-				<span>时代</br>Era:</span>
+				<span>年代</br>Era:</span>
 					<select id="period" name="period">
 						<option selected></option>
 					  <option value="Before 1700">Before 1700</option>
@@ -233,43 +204,168 @@ LOGIN_FORM;
 		<section id='form-buttons'>
 			<p>
 				<button type="submit" name="submit" value="1"><p>创建项目 Create item</p></button>
-				<button type="reset"><p>复位 Reset</p></button>
+				<button type="reset" name="reset" onclick="return confirm('您确重置吗? Please confirm or cancel the reset.')"><p>复位 Reset</p></button>
 			</p>
 		</section>
 	</form>
 FORM_MARKUP;
 	}
 
+	public function display_latest_items() 
+	{
+		//retrieve last 5 records
+		echo <<<RECORDS_BEGIN
+			<div id='records'>
+RECORDS_BEGIN;
+		$db = new Database;
+		$query = '(SELECT * FROM items ORDER BY id DESC LIMIT 5) ORDER BY id DESC';
+		$db->query($query);
+		$db->execute();
+
+		$dir = new Image_transfer;
+		while ($result = $db->single()) 
+		{
+			$item_id = $result['id'];
+			$path = './gallery/' . $item_id;
+
+			if (file_exists($path)) 
+			{		
+				$images = $dir->dir_to_array($path);
+
+				echo <<<ITEM_BEGIN
+					<div class="pics">
+ITEM_BEGIN;
+
+				foreach ($images['thumbs'] as $filename) 
+				{
+					$filepath = $path . '/thumbs/' . $filename;
+
+					echo <<<IMAGES
+						<img class='thumbs' src="$filepath" alt="" height="38">	
+IMAGES;
+				}
+
+				foreach ($images['pictures'] as $filename) 
+				{
+					$filepath = $path . '/pictures/' . $filename;
+					echo <<<IMAGES
+						<img class='pictures' src="$filepath" alt="" height="75">	
+IMAGES;
+				}
+
+				echo <<<ITEM_END
+				</div>
+ITEM_END;
+			}	
+			else
+			{
+				echo <<<ITEM_BEGIN
+					<div class="pics">
+ITEM_BEGIN;
+
+				echo <<<NOIMAGE
+					<img class='pictures' src="./img/no_img.jpg" alt="" height="75">	
+NOIMAGE;
+
+				echo <<<ITEM_END
+					</div>
+ITEM_END;
+			}
+
+			echo <<<DETAILS_BEGIN
+				<div class="details">
+				<pre>
+DETAILS_BEGIN;
+
+			print_r($result);
+
+			echo <<<DETAILS_END
+				</pre>
+			</div>
+DETAILS_END;
+			}
+
+			echo <<<RECORDS_END
+				</div>
+RECORDS_END;
+	}
+
 	public function submit_item()
 	{
 		$db = new Database;
-		$img = new IMG_uploader;
+		$img = new Image_transfer;
+
+		$index = array(
+				'quality',
+				'weight',
+				'region',
+				'period',
+				'year',
+				'description',
+				'details',
+				'price',
+				'imgsource'
+		);
+
+		$index_concat = '';
+		foreach ($index as $key => $value)
+		{
+			if (!empty($_POST[$value]))
+			{
+				if ($key === count($index) - 1)
+				{
+					$index_concat .= $value;
+				}
+				else
+				{
+					$index_concat .= $value . ',';
+				}
+			}
+		}
+
+		$index_colon = '';
+		foreach ($index as $key => $value) 
+		{
+			if (!empty($_POST[$value]))
+			{
+				if ($key === count($index) - 1)
+				{
+					$index_colon .= ':' . $value;
+				}
+				else
+				{
+					$index_colon .= ':' . $value . ',';
+				}
+			}
+		}
 
 		try
 		{
-			$query = 'INSERT INTO items (quality, weight, region, period, year, description, details, price, imgsource)
-								VALUES (:quality, :weight, :region, :period, :year, :description, :details, :price, :imgsource)';
+			$query = 'INSERT INTO items (' .$index_concat.')
+								VALUES ('.$index_colon.')';
 
 			$db->query($query);
 
-			$db->bind(':quality',			 	$_POST['quality']);
-			$db->bind(':weight',			 	$_POST['weight']);
-			$db->bind(':region',			 	$_POST['region']);
-			$db->bind(':period',			 	$_POST['period']);
-			$db->bind(':year',			 		$_POST['year']);
-			$db->bind(':description',		$_POST['description']);
-			$db->bind(':details',			 	$_POST['details']);
-			$db->bind(':price',			 		$_POST['price']);
-			$db->bind(':imgsource',			$_POST['imgsource']);
+			foreach ($index as $key => $value)
+			{
+				if (!empty($_POST[$value]))
+				{
+					$db->bind(':' . $value , $_POST[$value]);
+				}
+				else
+				{
+					echo '</br>Missing index: ' . $value;
+				}
+			}
 
 			$db->execute();
 			$lastID = $db->lastID();
 
-			echo 'Saved item number: "'.$lastID.'" to database.';
+			echo '</br>Saved item number: "'.$lastID.'" to database.';
 		}
 		catch(PDOException $e)
     {
-        echo $e->getMessage();
+      echo $e->getMessage();
     }
 
     if ($db->error) 

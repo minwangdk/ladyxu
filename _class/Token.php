@@ -1,12 +1,5 @@
 <?php
-
-
-
 require_once 'Database.php';
-
-
-
-
 class Token 
 {
     function random_text( $type = 'alnum', $length = 8 )

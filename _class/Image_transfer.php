@@ -1,5 +1,6 @@
 <?php
 require_once 'Token.php';
+require_once 'Database.php';
 
 class Image_transfer {
 
@@ -143,5 +144,32 @@ class Image_transfer {
          } 
       }       
       return $result; 
+   }
+
+   public function fetch_items($first = 1, $many = 10) //get an array with details and image filepath from item $first to this many $many.
+   {
+      $db = new Database;
+      $query = "(SELECT * FROM items ORDER BY created DESC LIMIT ".($first - 1).",{$many}) ORDER BY created DESC";
+      $db->query($query);
+      $db->execute();
+      
+      $result = $db->all();      
+      
+      foreach ($result as $key => $value) {
+         $item_id = $result[$key]['id'];
+         $path = './gallery/' . $item_id;
+         
+         if (file_exists($path)) 
+         {  
+            $result[$key]['filepath'] = $this->dir_to_array($path);
+         }
+      }
+
+      return $result;
+
+      
+      
+
+      
    }
 }

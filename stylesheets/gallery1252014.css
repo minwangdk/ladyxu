@@ -598,22 +598,95 @@ header[role=banner] nav ul a {
   height: 100%;
 }
 
-/* line 7, ../sass/partials/_index.scss */
-body, select, input, textarea {
-  color: #222222;
+/* line 1, ../sass/partials/_item_display.scss */
+#item-browser {
+  position: absolute;
+  display: block;
+  height: 1000px;
+  width: 80%;
+  max-width: 800px;
+  min-width: 400px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  /*background:#DFDFDF;*/
+}
+/* line 13, ../sass/partials/_item_display.scss */
+#item-browser table {
+  position: relative;
+  display: inline-block;
+  top: 30px;
+  right: 0px;
+  height: 1000px;
+  width: 640px;
+  text-align: center;
+  /*background:#6596D1;*/
+  /* @include clearfix; */
+}
+/* line 29, ../sass/partials/_item_display.scss */
+#item-browser td {
+  position: relative;
+  display: inline-block;
+  height: auto;
+  max-height: 200px;
+  width: 154px;
+  /*@include float-left;*/
+  margin: 1px;
+  background: #fafae0;
+  border: 1px solid #AEAEAE;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  text-align: center;
+  vertical-align: bottom;
+}
+/* line 47, ../sass/partials/_item_display.scss */
+#item-browser td img {
+  max-height: 120px;
+  width: auto;
+  max-width: 100%;
+}
+/* line 56, ../sass/partials/_item_display.scss */
+#item-browser td div p {
+  font-size: 14px;
+  margin: 0 4px 5px;
 }
 
-/*#slider1_container{	
-	position: relative;
-	display: inline; 
-	top: 100px; 
-	width: 600px; 
-	height: 300px; 
-	margin-right: auto;
-	margin-left: auto;
+/* line 63, ../sass/partials/_item_display.scss */
+#controls {
+  position: absolute;
+  display: block;
+  height: 30px;
+  width: 650px;
+  left: 150px;
+  background: #888888;
+}
 
-	background-color: black;
-}*/
+/* line 74, ../sass/partials/_item_display.scss */
+#pages {
+  position: absolute;
+  display: inline-block;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  height: 30px;
+  width: 100px;
+  background: #EA8E9E;
+}
+
+/* line 85, ../sass/partials/_item_display.scss */
+#sidebar {
+  position: relative;
+  display: inline-block;
+  height: 1000px;
+  width: 150px;
+  background: #0FAA22;
+}
+
 /* line 7, ../../../../Users/Min/Desktop/Programming/compass.app/lib/ruby/compass_extensions/compass-h5bp-0.1.1/stylesheets/h5bp/_helpers.scss */
 .ir {
   background-color: transparent;

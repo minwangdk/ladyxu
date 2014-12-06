@@ -62,16 +62,18 @@ if ($display_admin === FALSE && count($_COOKIE) > 0 && !empty($_COOKIE['token'])
 ?>
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<meta http-equiv="expires" content="Sun, 01 Jan 2014 00:00:00 GMT"/>
-		<meta http-equiv="pragma" content="no-cache" />
-		<title>Admin Page</title>
-	 	<link rel="stylesheet" href="stylesheets/admin-1-12-2014.css">
-	 	<script src="js/vendor/modernizr-2.6.2.min.js"></script>
-	</head>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="expires" content="Sun, 01 Jan 2014 00:00:00 GMT"/>
+	<meta http-equiv="pragma" content="no-cache" />
+	<title>Admin Page</title>
+	<link rel="stylesheet" href="stylesheets/admin.css">
+	<script src="js/vendor/modernizr-2.6.2.min.js"></script>
+</head>
 <body>
 <?php
+require_once './partial_php/_banner.php';
+
 
 // Display
 if ($display_admin)
@@ -91,7 +93,7 @@ else
 
 ?>
 
-
+<!-- JS for 'Confirm Navigation' -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>      
 

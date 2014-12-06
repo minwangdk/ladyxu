@@ -1,3 +1,9 @@
+/* line 33, ../sass/partials/_base.scss */
+body {
+  margin: 0;
+  padding: 0;
+}
+
 /* line 33, ../../../../Users/Min/Desktop/Programming/compass.app/lib/ruby/compass_extensions/compass-h5bp-0.1.1/stylesheets/h5bp/_normalize.scss */
 article,
 aside,
@@ -339,126 +345,275 @@ table {
   border-spacing: 0;
 }
 
-/* line 5, ../sass/partials/_admin.scss */
-h1 {
-  margin-top: 0;
-}
-
-/* line 9, ../sass/partials/_admin.scss */
-ul {
+/* line 9, ../sass/partials/_banner.scss */
+#header-container {
+  position: relative;
+  width: 100%;
+  height: 130px;
   margin: 0;
   padding: 0;
-  list-style: none;
-}
-
-/* line 15, ../sass/partials/_admin.scss */
-form {
-  position: relative;
-  display: inline-block;
-  width: 400px;
-  margin: 10px 0 0 10px;
-  padding: 1em;
-  border: 1px solid #CCC;
-  border-radius: 1em;
-}
-
-/* line 26, ../sass/partials/_admin.scss */
-label span {
-  display: inline-block;
-  width: 125px;
-  text-align: right;
-}
-
-/* line 32, ../sass/partials/_admin.scss */
-input, textarea {
-  font: 1em sans-serif;
-  width: 250px;
+  background-color: #6f1123;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  border: 1px solid #999;
+  border: solid 2px #5a0e1c;
 }
 
-/* line 41, ../sass/partials/_admin.scss */
-input[type=text] {
-  width: 100px;
+/* line 21, ../sass/partials/_banner.scss */
+#curlysquare {
+  position: absolute;
+  display: block;
+  width: 225px;
+  height: 123px;
+  left: -57px;
+  top: 0px;
+  /*background-color: black;*/
+}
+/* line 30, ../sass/partials/_banner.scss */
+#curlysquare div {
+  position: absolute;
+  border-color: #5a0e1c;
+  border-style: solid;
+  border-width: 0;
+}
+/* line 38, ../sass/partials/_banner.scss */
+#curlysquare #bars {
+  left: 54px;
+  top: 1px;
+  width: 108px;
+  height: 118px;
+  border-width: 0 3px 3px 3px;
+  /*background-color: #EEB5D6;*/
+}
+/* line 48, ../sass/partials/_banner.scss */
+#curlysquare #left-ear {
+  left: 1px;
+  top: 1px;
+  width: 50px;
+  height: 50px;
+  border-width: 3px 0 0 3px;
+}
+/* line 55, ../sass/partials/_banner.scss */
+#curlysquare #left-ear #le-1 {
+  left: 0px;
+  top: 10px;
+  width: 38px;
+  height: 37px;
+  border-width: 0 3px 3px 0;
+}
+/* line 63, ../sass/partials/_banner.scss */
+#curlysquare #left-ear #le-2 {
+  left: 10px;
+  top: 10px;
+  width: 26px;
+  height: 24px;
+  border-width: 3px 0 0 3px;
+}
+/* line 71, ../sass/partials/_banner.scss */
+#curlysquare #left-ear #le-3 {
+  left: 10px;
+  top: 22px;
+  width: 14px;
+  height: 12px;
+  border-width: 0 3px 3px 0;
+}
+/* line 80, ../sass/partials/_banner.scss */
+#curlysquare #right-ear {
+  left: 168px;
+  top: 1px;
+  width: 50px;
+  height: 50px;
+  border-width: 3px 3px 0 0;
+}
+/* line 87, ../sass/partials/_banner.scss */
+#curlysquare #right-ear #re-1 {
+  right: 0px;
+  top: 10px;
+  width: 38px;
+  height: 37px;
+  border-width: 0 0 3px 3px;
+}
+/* line 95, ../sass/partials/_banner.scss */
+#curlysquare #right-ear #re-2 {
+  right: 10px;
+  top: 10px;
+  width: 26px;
+  height: 24px;
+  border-width: 3px 3px 0 0;
+}
+/* line 103, ../sass/partials/_banner.scss */
+#curlysquare #right-ear #re-3 {
+  right: 10px;
+  top: 22px;
+  width: 14px;
+  height: 12px;
+  border-width: 0 0 3px 3px;
 }
 
-/* line 45, ../sass/partials/_admin.scss */
-input[type=checkbox], input[type=radio] {
-  width: auto;
-  border: none;
-}
-
-/* line 50, ../sass/partials/_admin.scss */
-input:focus, textarea:focus {
-  border-color: #000;
-}
-
-/* line 54, ../sass/partials/_admin.scss */
-textarea {
-  vertical-align: top;
-  height: 5em;
-  resize: vertical;
-}
-
-/* line 62, ../sass/partials/_admin.scss */
-fieldset {
-  width: 250px;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  margin-left: 124px;
-  border: 1px solid #999;
-}
-
-/* line 72, ../sass/partials/_admin.scss */
-#form-buttons {
-  margin-top: 33px;
-  border-top: 1px dotted #8A8A8A;
-}
-
-/* line 77, ../sass/partials/_admin.scss */
-button {
-  margin-left: 47px;
-}
-/* line 80, ../sass/partials/_admin.scss */
-button p {
-  height: 20px;
-  margin: 5px;
-  padding: 0px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-}
-
-/* line 88, ../sass/partials/_admin.scss */
-#records {
+/* line 113, ../sass/partials/_banner.scss */
+#crown {
   position: absolute;
   display: inline-block;
-  left: 470px;
-  top: 0px;
+  right: 0px;
+}
+/* line 118, ../sass/partials/_banner.scss */
+#crown img {
+  height: 120px;
 }
 
-/* line 95, ../sass/partials/_admin.scss */
-.pics {
-  position: relative;
+/* line 124, ../sass/partials/_banner.scss */
+header[role=banner] {
+  position: absolute;
   display: block;
-  top: 0px;
+  width: 50%;
+  min-width: 400px;
+  max-width: 800px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
-
-/* line 104, ../sass/partials/_admin.scss */
-.details {
+/* line 136, ../sass/partials/_banner.scss */
+header[role=banner] #logo {
+  background-color: #6f1123;
   position: relative;
   display: inline-block;
-  right: 10px;
-  top: -20px;
+  width: 106px;
+  height: 118px;
+  /*background-color: grey;*/
+  /*border-style: solid;
+  border-width: 4px;
+  border-color: $main-border-color;*/
+}
+/* line 147, ../sass/partials/_banner.scss */
+header[role=banner] #logo p {
+  text-align: center;
+  color: white;
+  font-size: 48px;
+  padding: 5px;
+  margin: -5px 0;
+  font-family: Tahoma, Helvetica, Arial, STXihei, "华文细黑", serif;
+}
+/* line 158, ../sass/partials/_banner.scss */
+header[role=banner] nav {
+  position: relative;
+  display: inline-block;
+  bottom: -3px;
+  left: 7px;
+}
+/* line 164, ../sass/partials/_banner.scss */
+header[role=banner] nav h3 {
+  position: relative;
+  display: inline;
+  color: #a47f1a;
+  font-size: 1.5em;
+  top: -10px;
+}
+/* line 173, ../sass/partials/_banner.scss */
+header[role=banner] nav ul {
+  text-align: left;
+  display: inline;
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+/* line 180, ../sass/partials/_banner.scss */
+header[role=banner] nav ul li {
+  position: relative;
+  display: inline-block;
+  margin: 0px;
+  padding: 8px 15px 13px;
+  z-index: 8;
+  font-family: "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", serif;
+  color: white;
+  text-decoration: none;
+  font-size: 1em;
+}
+/* line 198, ../sass/partials/_banner.scss */
+header[role=banner] nav ul li ul {
+  position: absolute;
+  display: none;
+  left: -64px;
+  top: 44px;
+  width: 600px;
+  height: 400px;
+  z-index: 4;
+  background-color: white;
+  border-style: solid;
+  border-width: 0 2px 2px 2px;
+  border-color: #5a0e1c;
+  -moz-border-radius-bottomleft: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+/* line 216, ../sass/partials/_banner.scss */
+header[role=banner] nav ul li ul li {
+  display: block;
+  top: 30px;
+  width: 95px;
+  /*background-color: $main-red-color;*/
+  color: #6f1123;
+  text-align: left;
+  margin: 3px 0;
+  padding: 5px 15px 5px 20px;
+  z-index: 4;
+  border-style: none;
+}
+/* line 239, ../sass/partials/_banner.scss */
+header[role=banner] nav ul li ul li:hover {
+  font-weight: bold;
+  border-style: none;
+  margin: 3px 0;
+}
+/* line 250, ../sass/partials/_banner.scss */
+header[role=banner] nav ul li:hover {
+  background-color: white;
+  color: #6f1123;
+  font-weight: bold;
+  margin: 0 -2px;
+  border-style: solid;
+  border-width: 2px;
+  -moz-border-radius-topleft: 4px;
+  -webkit-border-top-left-radius: 4px;
+  border-top-left-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  -webkit-border-top-right-radius: 4px;
+  border-top-right-radius: 4px;
+  border-color: #5a0e1c;
+  border-bottom-color: white;
+}
+/* line 262, ../sass/partials/_banner.scss */
+header[role=banner] nav ul li:hover ul {
+  display: block;
+}
+/* line 268, ../sass/partials/_banner.scss */
+header[role=banner] nav ul a {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
 }
 
-/* line 115, ../sass/partials/_admin.scss */
-.pictures {
-  border: 2px solid maroon;
+/* line 7, ../sass/partials/_index.scss */
+body, select, input, textarea {
+  color: #222222;
 }
 
+/*#slider1_container{	
+	position: relative;
+	display: inline; 
+	top: 100px; 
+	width: 600px; 
+	height: 300px; 
+	margin-right: auto;
+	margin-left: auto;
+
+	background-color: black;
+}*/
 /* line 7, ../../../../Users/Min/Desktop/Programming/compass.app/lib/ruby/compass_extensions/compass-h5bp-0.1.1/stylesheets/h5bp/_helpers.scss */
 .ir {
   background-color: transparent;

@@ -24,11 +24,11 @@ require_once './partial_php/_header.php';
    
 
 <?php
-include './partial_php/_banner.php';
+require_once './partial_php/_banner.php';
+require_once './partial_php/_category_bar.php';
 ?>
 
-<section id='item-browser'>
-   <div id="sidebar"></div>
+<section id='item-browser'>   
    <div id='controls'>
       <div id="pages"></div>
    </div>

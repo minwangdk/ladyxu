@@ -345,6 +345,11 @@ table {
   border-spacing: 0;
 }
 
+@font-face {
+  font-family: "Champagne";
+  src: url(/ladyxu/sass/fonts/champagne/cac_champagne-webfont.ttf) format('truetype'), url(/ladyxu/sass/fonts/champagne/cac_champagne-webfont.woff) format('woff'), url(/ladyxu/sass/fonts/champagne/cac_champagne-webfont.svg) format('svg'), url(/ladyxu/sass/fonts/champagne/cac_champagne-webfont.eot) format('embedded-opentype');
+}
+
 /* line 9, ../sass/partials/_banner.scss */
 #header-container {
   position: relative;
@@ -598,6 +603,16 @@ header[role=banner] nav ul a {
   height: 100%;
 }
 
+/* line 1, ../sass/partials/_category_bar.scss */
+#category_bar {
+  position: relative;
+  display: block;
+  height: 100px;
+  width: 800px;
+  margin: 0 auto;
+  background: #0FAA22;
+}
+
 /* line 1, ../sass/partials/_item_display.scss */
 #item-browser {
   position: absolute;
@@ -672,15 +687,6 @@ header[role=banner] nav ul a {
   height: 30px;
   width: 100px;
   background: #EA8E9E;
-}
-
-/* line 85, ../sass/partials/_item_display.scss */
-#sidebar {
-  position: relative;
-  display: block;
-  height: 100px;
-  width: 800px;
-  background: #0FAA22;
 }
 
 /* line 7, ../../../../Users/Min/Desktop/Programming/compass.app/lib/ruby/compass_extensions/compass-h5bp-0.1.1/stylesheets/h5bp/_helpers.scss */

@@ -2,6 +2,9 @@
 require_once 'Token.php';
 require_once 'Database.php';
 
+// Path to gallery
+define('GALLERY', '.' . DIRECTORY_SEPARATOR . 'gallery' . DIRECTORY_SEPARATOR);
+
 class Image_transfer {
 
    public function save_files($path) 
@@ -21,7 +24,7 @@ class Image_transfer {
                   break;
             }
 
-            $upload_path = sprintf('./gallery/' . sprintf($path) . '/' . $file_group);
+            $upload_path = sprintf(GALLERY . sprintf($path) . '/' . $file_group);
 
             // Error detection
             if (!empty($_FILES[$file_group])) 
@@ -96,12 +99,12 @@ class Image_transfer {
                      if (!move_uploaded_file(
                      $file,
                      sprintf($upload_path . '/%s_%s.jpg',
-                           $token->random_text(),
-                           ($key + 1)
+                           ($key + 1),
+                           $token->random_text()
                      )
-              )) {
-                    throw new RuntimeException('Failed to move uploaded file.');
-                   }
+                  )) {
+                        throw new RuntimeException('Failed to move uploaded file.');
+                     }
                   }
 
                   switch ($file_group) {
@@ -139,7 +142,7 @@ class Image_transfer {
             } 
             else 
             { 
-               $result[] = $value; 
+               $result[] = $dir. DIRECTORY_SEPARATOR .$value; 
             } 
          } 
       }       
@@ -157,7 +160,7 @@ class Image_transfer {
       
       foreach ($result as $key => $value) {
          $item_id = $result[$key]['id'];
-         $path = './gallery/' . $item_id;
+         $path = GALLERY . $item_id;
          
          if (file_exists($path)) 
          {  
@@ -166,10 +169,26 @@ class Image_transfer {
       }
 
       return $result;
+   }
 
-      
-      
+   public function single_item($item_id)
+   {
+      $db = new Database;
+      $query = '  SELECT * 
+                  FROM items
+                  WHERE id = :id ';
+      $db->query($query);
+      $db->bind(':id', $item_id);
+      $db->execute();
+      $result = $db->single(); 
 
-      
+      $path = GALLERY . $item_id;
+               
+      if (file_exists($path)) 
+      {           
+         $result['filepath'] = $this->dir_to_array($path);
+      } 
+
+      return $result; 
    }
 }

@@ -345,6 +345,11 @@ table {
   border-spacing: 0;
 }
 
+@font-face {
+  font-family: "Champagne";
+  src: url(/ladyxu/sass/fonts/champagne/cac_champagne-webfont.ttf) format('truetype'), url(/ladyxu/sass/fonts/champagne/cac_champagne-webfont.woff) format('woff'), url(/ladyxu/sass/fonts/champagne/cac_champagne-webfont.svg) format('svg'), url(/ladyxu/sass/fonts/champagne/cac_champagne-webfont.eot) format('embedded-opentype');
+}
+
 /* line 9, ../sass/partials/_banner.scss */
 #header-container {
   position: relative;

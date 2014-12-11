@@ -603,36 +603,33 @@ header[role=banner] nav ul a {
   position: absolute;
   display: block;
   height: 1000px;
-  width: 80%;
-  max-width: 800px;
-  min-width: 400px;
+  width: 800px;
   left: 0;
   right: 0;
   margin-left: auto;
   margin-right: auto;
   /*background:#DFDFDF;*/
 }
-/* line 13, ../sass/partials/_item_display.scss */
+/* line 12, ../sass/partials/_item_display.scss */
 #item-browser table {
   position: relative;
   display: inline-block;
-  top: 30px;
-  right: 0px;
-  height: 1000px;
-  width: 640px;
-  text-align: center;
+  height: 2000px;
+  width: 800px;
+  padding: 5px;
+  text-align: left;
   /*background:#6596D1;*/
   /* @include clearfix; */
 }
-/* line 29, ../sass/partials/_item_display.scss */
+/* line 30, ../sass/partials/_item_display.scss */
 #item-browser td {
   position: relative;
   display: inline-block;
   height: auto;
-  max-height: 200px;
-  width: 154px;
+  width: 165px;
   /*@include float-left;*/
-  margin: 1px;
+  margin: 5px 5px;
+  padding: 0 10px;
   background: #fafae0;
   border: 1px solid #AEAEAE;
   -webkit-border-radius: 3px;
@@ -641,11 +638,10 @@ header[role=banner] nav ul a {
   -o-border-radius: 3px;
   border-radius: 3px;
   text-align: center;
-  vertical-align: bottom;
+  vertical-align: top;
 }
-/* line 47, ../sass/partials/_item_display.scss */
+/* line 48, ../sass/partials/_item_display.scss */
 #item-browser td img {
-  max-height: 120px;
   width: auto;
   max-width: 100%;
 }
@@ -653,15 +649,15 @@ header[role=banner] nav ul a {
 #item-browser td div p {
   font-size: 14px;
   margin: 0 4px 5px;
+  color: #4F4F4F;
 }
 
-/* line 63, ../sass/partials/_item_display.scss */
+/* line 64, ../sass/partials/_item_display.scss */
 #controls {
-  position: absolute;
+  position: relative;
   display: block;
   height: 30px;
-  width: 650px;
-  left: 150px;
+  width: 800px;
   background: #888888;
 }
 
@@ -681,9 +677,9 @@ header[role=banner] nav ul a {
 /* line 85, ../sass/partials/_item_display.scss */
 #sidebar {
   position: relative;
-  display: inline-block;
-  height: 1000px;
-  width: 150px;
+  display: block;
+  height: 100px;
+  width: 800px;
   background: #0FAA22;
 }
 

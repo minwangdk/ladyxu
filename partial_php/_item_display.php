@@ -39,8 +39,7 @@ foreach ($catalogue as $key => $value) {
    {
       $thumb = $catalogue[$key]['filepath']['thumbs'][0];
       $item_id = $catalogue[$key]['id'];
-      $path = "./gallery/{$item_id}/thumbs/";
-      $thumb_path = $path . $thumb;
+      $thumb_path = $thumb;
    }
    else
    {

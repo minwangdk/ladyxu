@@ -347,9 +347,15 @@ table {
 
 @font-face {
   font-family: "Champagne";
-  src: url(/ladyxu/sass/fonts/champagne/cac_champagne-webfont.ttf) format('truetype'), url(/ladyxu/sass/fonts/champagne/cac_champagne-webfont.woff) format('woff'), url(/ladyxu/sass/fonts/champagne/cac_champagne-webfont.svg) format('svg'), url(/ladyxu/sass/fonts/champagne/cac_champagne-webfont.eot) format('embedded-opentype');
+  src: url(/ladyxu/stylesheets/fonts/champagne/cac_champagne-webfont.ttf) format('truetype'), url(/ladyxu/stylesheets/fonts/champagne/cac_champagne-webfont.woff) format('woff'), url(/ladyxu/stylesheets/fonts/champagne/cac_champagne-webfont.svg) format('svg'), url(/ladyxu/stylesheets/fonts/champagne/cac_champagne-webfont.eot) format('embedded-opentype');
 }
 
+/*
+@include font-face("Champagne", font-files(
+"champagne/cac_champagne-webfont.ttf",
+"champagne/cac_champagne-webfont.woff",
+"champagne/cac_champagne-webfont.svg",
+"champagne/cac_champagne-webfont.eot"));*/
 /* line 9, ../sass/partials/_banner.scss */
 #header-container {
   position: relative;
@@ -626,14 +632,19 @@ form {
   border-radius: 1em;
 }
 
-/* line 26, ../sass/partials/_admin.scss */
+/* line 25, ../sass/partials/_admin.scss */
+select {
+  background: #E9F4FC;
+}
+
+/* line 29, ../sass/partials/_admin.scss */
 label span {
   display: inline-block;
   width: 125px;
   text-align: right;
 }
 
-/* line 32, ../sass/partials/_admin.scss */
+/* line 35, ../sass/partials/_admin.scss */
 input, textarea {
   font: 1em sans-serif;
   width: 250px;
@@ -643,35 +654,35 @@ input, textarea {
   border: 1px solid #999;
 }
 
-/* line 41, ../sass/partials/_admin.scss */
+/* line 44, ../sass/partials/_admin.scss */
 input[type=text] {
   width: 100px;
 }
 
-/* line 45, ../sass/partials/_admin.scss */
+/* line 48, ../sass/partials/_admin.scss */
 input[type=checkbox], input[type=radio] {
   width: auto;
   border: none;
 }
 
-/* line 50, ../sass/partials/_admin.scss */
+/* line 53, ../sass/partials/_admin.scss */
 input:focus, textarea:focus {
   border-color: #000;
 }
 
-/* line 54, ../sass/partials/_admin.scss */
+/* line 57, ../sass/partials/_admin.scss */
 textarea {
   vertical-align: top;
   height: 4em;
   resize: vertical;
 }
 
-/* line 62, ../sass/partials/_admin.scss */
+/* line 65, ../sass/partials/_admin.scss */
 #details {
   height: 8em;
 }
 
-/* line 66, ../sass/partials/_admin.scss */
+/* line 69, ../sass/partials/_admin.scss */
 fieldset {
   width: 250px;
   -moz-box-sizing: border-box;
@@ -680,17 +691,17 @@ fieldset {
   border: 1px solid #999;
 }
 
-/* line 76, ../sass/partials/_admin.scss */
+/* line 79, ../sass/partials/_admin.scss */
 #form-buttons {
   margin-top: 33px;
   border-top: 1px dotted #8A8A8A;
 }
 
-/* line 81, ../sass/partials/_admin.scss */
+/* line 84, ../sass/partials/_admin.scss */
 button {
   margin-left: 47px;
 }
-/* line 84, ../sass/partials/_admin.scss */
+/* line 87, ../sass/partials/_admin.scss */
 button p {
   height: 20px;
   margin: 5px;
@@ -700,7 +711,7 @@ button p {
   user-select: none;
 }
 
-/* line 92, ../sass/partials/_admin.scss */
+/* line 95, ../sass/partials/_admin.scss */
 #records {
   position: absolute;
   display: inline-block;
@@ -708,14 +719,14 @@ button p {
   top: 140px;
 }
 
-/* line 99, ../sass/partials/_admin.scss */
+/* line 102, ../sass/partials/_admin.scss */
 .pics {
   position: relative;
   display: block;
   top: 0px;
 }
 
-/* line 108, ../sass/partials/_admin.scss */
+/* line 111, ../sass/partials/_admin.scss */
 .details {
   position: relative;
   display: inline-block;
@@ -723,7 +734,7 @@ button p {
   top: -20px;
 }
 
-/* line 119, ../sass/partials/_admin.scss */
+/* line 122, ../sass/partials/_admin.scss */
 .pictures {
   border: 2px solid maroon;
 }

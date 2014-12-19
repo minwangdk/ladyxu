@@ -3,8 +3,9 @@ require_once 'partial_php/_header.php';
 require_once '_class/Database.php';
 require_once '_class/Admin_page.php';
 require_once '_class/Token.php';
-require_once '_class/Image_transfer.php';
+require_once '_class/Item_transfer.php';
 $admin = new Admin_page;
+$item = new Item_transfer;
 
 // Authentication
 $display_admin = FALSE;
@@ -81,7 +82,7 @@ if ($display_admin)
 	echo $admin->display_admin();
 	
 	if (!empty($_POST['submit'])) {
-		$admin->submit_item();
+		$item->submit_item();
 	}
 
 	$admin->display_latest_items();

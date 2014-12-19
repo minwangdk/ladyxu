@@ -1,40 +1,29 @@
 <?php 
-header('Content-Type: text/html; charset=utf-8'); 
-require_once '_class/Database.php';
-$db = new Database;
+?>
 
-		
-		echo "琝琝 is great！";
+<form action=""  method="post" enctype="multipart/form-data">
+    <p>
+         <label for="pics">
+            <span>图片 Pictures:</span>
+            <input type="file" multiple name="pics[]" id="pictures" accept=".jpg,.jpeg"/>
+         </label>
+      </p>
 
-		// $query = 'INSERT INTO items (quality, weight, region, period, year, description, details, price, imgsource)
-		// 						VALUES (:quality, :weight, :region, :period, :year, :description, :details, :price, :imgsource)';
-
-		// 	$db->query($query);
-
-		// 	$db->bind(':quality',		''	 	);
-		// 	$db->bind(':weight',		''	 	);
-		// 	$db->bind(':region',		''	 	);
-		// 	$db->bind(':period',		''	 	);
-		// 	$db->bind(':year',			'' 		);
-		// 	$db->bind(':description',	"琝琝 is great！"	);
-		// 	$db->bind(':details',			'' 	);
-		// 	$db->bind(':price',			 	''	);
-		// 	$db->bind(':imgsource',		''	);
-			
-		// 	$db->execute();
+      <p>
+         <button type="submit" name="submit" value="1"><p>创建项目 Create item</p></button>
+         
+      </p>
 
 
-		$query = 'SELECT *
-							FROM items';
+</form>
 
-		$db->query($query);
-		$all_records = $db->all();
+<?php
 
 // pre and print
 ?>
 <pre>
 <?php
-print_r($all_records);
+print_r($_FILES);
 ?>
 </pre>
 <?php

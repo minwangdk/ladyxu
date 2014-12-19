@@ -1,134 +1,158 @@
 <?php
 require_once 'Token.php';
 require_once 'Database.php';
+require_once 'vendor/wideimage/WideImage.php';
 
 // Path to gallery
 define('GALLERY', '.' . DIRECTORY_SEPARATOR . 'gallery' . DIRECTORY_SEPARATOR);
 
 class Image_transfer {
 
-   public function save_files($path) 
+   public function save_images($item_id) 
    {
       if (count($_FILES) > 0)
       { 
-         for ($i=0; $i < 2; $i++) { 
-            switch ($i) {
-               case '0':
-                  $file_group = 'thumbs';
-                  $max_filesize = 30720;
-                  break;
+         $upload_path = sprintf(GALLERY . sprintf($item_id) . '/');
 
-               case '1':
-                  $file_group = 'pictures';
-                  $max_filesize = 2097152;
-                  break;
-            }
+         if (!empty($_FILES['pictures'])) 
+         {
+            try
+            {           
+               // Undefined | $_FILES Corruption Attack
+               // If this request falls under any of them, treat it invalid.
+               if (count($_FILES['pictures']['tmp_name']) != 
+                  count($_FILES['pictures']['error']) )
+               {
+                  throw new RuntimeException('Invalid parameters.');
+               }
 
-            $upload_path = sprintf(GALLERY . sprintf($path) . '/' . $file_group);
-
-            // Error detection
-            if (!empty($_FILES[$file_group])) 
-            {
-               try
-               {           
-                  // Undefined | $_FILES Corruption Attack
-                // If this request falls under any of them, treat it invalid.
-                if (count($_FILES[$file_group]['tmp_name']) != 
-                     count($_FILES[$file_group]['error']) )
-                {
-                 throw new RuntimeException('Invalid parameters.');
-                }
-
-                  // Check $_FILES['upfile']['error'] value.
-                  foreach ($_FILES[$file_group]['error'] as $error) 
+               // Check $_FILES['upfile']['error'] value.
+               foreach ($_FILES['pictures']['error'] as $error) 
+               {
+                  switch ($error)
                   {
-                   switch ($error) {
-                       case UPLOAD_ERR_OK:
-                           break;
-                       case UPLOAD_ERR_NO_FILE:
-                           throw new RuntimeException('No file sent.');
-                       case UPLOAD_ERR_INI_SIZE:
-                       case UPLOAD_ERR_FORM_SIZE:
-                           throw new RuntimeException('Exceeded filesize limit.');
-                       default:
-                           throw new RuntimeException('Unknown errors.');
-                   }
+                     case UPLOAD_ERR_OK:
+                        break;
+                     case UPLOAD_ERR_NO_FILE:
+                        throw new RuntimeException('No file sent.');
+                     case UPLOAD_ERR_INI_SIZE:
+                     case UPLOAD_ERR_FORM_SIZE:
+                        throw new RuntimeException('Exceeded filesize limit.');
+                     default:
+                        throw new RuntimeException('Unknown errors.');
                   }
+               }
 
-                  // Check filesize
-                  foreach ($_FILES[$file_group]['size'] as $filesize)
+               // Check filesize
+               foreach ($_FILES['pictures']['size'] as $filesize)
+               {
+                  if ($filesize > 2097152)
                   {
-                     if ($filesize > $max_filesize)
-                     {
-                        {
-                       throw new RuntimeException('Exceeded filesize limit.');
-                      }
-                     }
+                     throw new RuntimeException('Exceeded filesize limit.');
                   }
+               }
 
-                // Check filetype 
-                  $finfo = new finfo(FILEINFO_MIME_TYPE);
-                foreach ($_FILES[$file_group]['tmp_name'] as $file) 
-                  {
-                     if (false === $ext = array_search(
-                       $finfo->file($file),
-                       array(
-                        'jpg' => 'image/jpeg'
-                       ),
-                       true
-             ))   {
-                  throw new RuntimeException('Invalid file format.');
+               // Check filetype 
+               $finfo = new finfo(FILEINFO_MIME_TYPE);
+               foreach ($_FILES['pictures']['tmp_name'] as $file) 
+               {
+                  if (false === $ext = array_search(
+                    $finfo->file($file),
+                    array(
+                     'jpg' => 'image/jpeg'
+                    ),
+                    true
+               )) {
+                     throw new RuntimeException('Invalid file format.');
                   }
+               }
+
+               // Load images into WideImage 
+               $images = array();
+               $images = WideImage::loadFromUpload('pictures');
+               $token = new Token;
+
+               // Iterate over the three image sizes: L , M , S 
+               for ($i=0; $i < 3; $i++) 
+               { 
+                  switch ($i) 
+                  {
+                     case 0:
+                        $image_size = 'large';
+                        $image_width = 1920;
+                        $image_height = 1080;
+                        break;
+                     case 1:
+                        $image_size = 'medium';
+                        $image_width = 300;
+                        $image_height = 600;
+                        break;
+                     case 2:
+                        $image_size = 'small';
+                        $image_width = 160;
+                        $image_height = 400;
+                        break;
+                     default:
+                        # code...
+                        break;
                   }
 
                   // Create directories
-                  if (!mkdir($upload_path, 0777, true))
+                  if (!mkdir($upload_path.$image_size, 0777, true))
                   {
                      throw new RuntimeException('Failed to create directory.');
                   }
 
-                  if (!is_writable($upload_path))
+                  if (!is_writable($upload_path.$image_size))
                   {
                      throw new RuntimeException('You cannot upload to the specified directory, please CHMOD it to 777.');
                   }
-
-                  // Move files to dir
-                  $token = new Token;
-                  foreach ($_FILES[$file_group]['tmp_name'] as $key => $file)
+                  
+                  // Resize and move files to dir
+                  foreach ($images as $key => $file)
                   {
-                     if (!move_uploaded_file(
-                     $file,
-                     sprintf($upload_path . '/%s_%s.jpg',
+                     if (!$resized = $images[$key]->resizeDown($image_width, $image_height))
+                     {
+                        throw new RuntimeException('Failed to resize uploaded file.');
+                     }
+                     
+                     $random_string = $token->random_text();
+                     $resized->saveToFile(
+                        sprintf($upload_path . '%s/%s_%s_%s.jpg',
+                           $image_size,
                            ($key + 1),
-                           $token->random_text()
+                           $item_id,
+                           $random_string
+                        )
+                     );
+
+                     if (!file_exists(
+                        sprintf($upload_path . '%s/%s_%s_%s.jpg',
+                           $image_size,
+                           ($key + 1),
+                           $item_id,
+                           $random_string
+                        )
                      )
-                  )) {
+                     )
+                     {
                         throw new RuntimeException('Failed to move uploaded file.');
                      }
                   }
-
-                  switch ($file_group) {
-                     case 'thumbs':
-                        $img_group = 'Thumbs';
-                        break;
-                     
-                     case 'pictures':
-                        $img_group = 'Pictures';
-                        break;                     
-                  }
-                  echo "</br>" . $img_group . " uploaded successfully.";
-               } 
-               catch (RuntimeException $e) 
-               {
-                echo "</br>Image upload error: " . $e->getMessage();
                }
+
+               echo "</br> pictures uploaded successfully.";
+            } 
+            catch (RuntimeException $e) 
+            {
+               echo "</br>Image upload error: " . $e->getMessage();
             }
          }
       }
    }
 
-   public function dir_to_array($dir) { 
-
+   public function dir_to_array($dir) 
+   {
       $result = array(); 
 
       $cdir = scandir($dir); 
@@ -146,49 +170,6 @@ class Image_transfer {
             } 
          } 
       }       
-      return $result; 
-   }
-
-   public function fetch_items($first = 1, $many = 10) //get an array with details and image filepath from item $first to this many $many.
-   {
-      $db = new Database;
-      $query = "(SELECT * FROM items ORDER BY created DESC LIMIT ".($first - 1).",{$many}) ORDER BY created DESC";
-      $db->query($query);
-      $db->execute();
-      
-      $result = $db->all();      
-      
-      foreach ($result as $key => $value) {
-         $item_id = $result[$key]['id'];
-         $path = GALLERY . $item_id;
-         
-         if (file_exists($path)) 
-         {  
-            $result[$key]['filepath'] = $this->dir_to_array($path);
-         }
-      }
-
-      return $result;
-   }
-
-   public function single_item($item_id)
-   {
-      $db = new Database;
-      $query = '  SELECT * 
-                  FROM items
-                  WHERE id = :id ';
-      $db->query($query);
-      $db->bind(':id', $item_id);
-      $db->execute();
-      $result = $db->single(); 
-
-      $path = GALLERY . $item_id;
-               
-      if (file_exists($path)) 
-      {           
-         $result['filepath'] = $this->dir_to_array($path);
-      } 
-
       return $result; 
    }
 }

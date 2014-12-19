@@ -347,9 +347,15 @@ table {
 
 @font-face {
   font-family: "Champagne";
-  src: url(/ladyxu/sass/fonts/champagne/cac_champagne-webfont.ttf) format('truetype'), url(/ladyxu/sass/fonts/champagne/cac_champagne-webfont.woff) format('woff'), url(/ladyxu/sass/fonts/champagne/cac_champagne-webfont.svg) format('svg'), url(/ladyxu/sass/fonts/champagne/cac_champagne-webfont.eot) format('embedded-opentype');
+  src: url(/ladyxu/stylesheets/fonts/champagne/cac_champagne-webfont.ttf) format('truetype'), url(/ladyxu/stylesheets/fonts/champagne/cac_champagne-webfont.woff) format('woff'), url(/ladyxu/stylesheets/fonts/champagne/cac_champagne-webfont.svg) format('svg'), url(/ladyxu/stylesheets/fonts/champagne/cac_champagne-webfont.eot) format('embedded-opentype');
 }
 
+/*
+@include font-face("Champagne", font-files(
+"champagne/cac_champagne-webfont.ttf",
+"champagne/cac_champagne-webfont.woff",
+"champagne/cac_champagne-webfont.svg",
+"champagne/cac_champagne-webfont.eot"));*/
 /* line 9, ../sass/partials/_banner.scss */
 #header-container {
   position: relative;
@@ -613,7 +619,7 @@ header[role=banner] nav ul a {
   background: #0FAA22;
 }
 
-/* line 1, ../sass/partials/_item_display.scss */
+/* line 1, ../sass/partials/_gallery_item_browser.scss */
 #item-browser {
   position: absolute;
   display: block;
@@ -625,7 +631,7 @@ header[role=banner] nav ul a {
   margin-right: auto;
   /*background:#DFDFDF;*/
 }
-/* line 12, ../sass/partials/_item_display.scss */
+/* line 12, ../sass/partials/_gallery_item_browser.scss */
 #item-browser table {
   position: relative;
   display: inline-block;
@@ -636,7 +642,7 @@ header[role=banner] nav ul a {
   /*background:#6596D1;*/
   /* @include clearfix; */
 }
-/* line 30, ../sass/partials/_item_display.scss */
+/* line 30, ../sass/partials/_gallery_item_browser.scss */
 #item-browser td {
   position: relative;
   display: inline-block;
@@ -655,19 +661,19 @@ header[role=banner] nav ul a {
   text-align: center;
   vertical-align: top;
 }
-/* line 48, ../sass/partials/_item_display.scss */
+/* line 48, ../sass/partials/_gallery_item_browser.scss */
 #item-browser td img {
   width: auto;
   max-width: 100%;
 }
-/* line 56, ../sass/partials/_item_display.scss */
+/* line 56, ../sass/partials/_gallery_item_browser.scss */
 #item-browser td div p {
   font-size: 14px;
   margin: 0 4px 5px;
   color: #4F4F4F;
 }
 
-/* line 64, ../sass/partials/_item_display.scss */
+/* line 64, ../sass/partials/_gallery_item_browser.scss */
 #controls {
   position: relative;
   display: block;
@@ -676,7 +682,7 @@ header[role=banner] nav ul a {
   background: #888888;
 }
 
-/* line 74, ../sass/partials/_item_display.scss */
+/* line 74, ../sass/partials/_gallery_item_browser.scss */
 #pages {
   position: absolute;
   display: inline-block;

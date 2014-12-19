@@ -347,9 +347,15 @@ table {
 
 @font-face {
   font-family: "Champagne";
-  src: url(/ladyxu/sass/fonts/champagne/cac_champagne-webfont.ttf) format('truetype'), url(/ladyxu/sass/fonts/champagne/cac_champagne-webfont.woff) format('woff'), url(/ladyxu/sass/fonts/champagne/cac_champagne-webfont.svg) format('svg'), url(/ladyxu/sass/fonts/champagne/cac_champagne-webfont.eot) format('embedded-opentype');
+  src: url(/ladyxu/stylesheets/fonts/champagne/cac_champagne-webfont.ttf) format('truetype'), url(/ladyxu/stylesheets/fonts/champagne/cac_champagne-webfont.woff) format('woff'), url(/ladyxu/stylesheets/fonts/champagne/cac_champagne-webfont.svg) format('svg'), url(/ladyxu/stylesheets/fonts/champagne/cac_champagne-webfont.eot) format('embedded-opentype');
 }
 
+/*
+@include font-face("Champagne", font-files(
+"champagne/cac_champagne-webfont.ttf",
+"champagne/cac_champagne-webfont.woff",
+"champagne/cac_champagne-webfont.svg",
+"champagne/cac_champagne-webfont.eot"));*/
 /* line 9, ../sass/partials/_banner.scss */
 #header-container {
   position: relative;
@@ -664,13 +670,13 @@ header[role=banner] nav ul a {
 }
 
 /* line 39, ../sass/partials/_item.scss */
-#thumbs {
+#medium_img_box {
   display: inline;
   float: left;
   margin: 30px auto 0;
 }
 /* line 43, ../sass/partials/_item.scss */
-#thumbs img {
+#medium_img_box img {
   display: block;
   margin: 0 0 10px;
   -webkit-box-shadow: 3px 3px 4px #949494;
@@ -716,11 +722,11 @@ header[role=banner] nav ul a {
 #item_info #specification p span {
   margin: 0 8px 0 0;
   padding: 10px 14px;
-  background-image: -webkit-gradient(linear, to bottom right, to top left, color-stop(0%, #c1d3dd), color-stop(20%, #4780b8), color-stop(100%, #1d5894));
-  background-image: -webkit-linear-gradient(to bottom right, #c1d3dd, #4780b8 20%, #1d5894);
-  background-image: -moz-linear-gradient(to bottom right, #c1d3dd, #4780b8 20%, #1d5894);
-  background-image: -o-linear-gradient(to bottom right, #c1d3dd, #4780b8 20%, #1d5894);
-  background-image: linear-gradient(to bottom right, #c1d3dd, #4780b8 20%, #1d5894);
+  background-image: -webkit-gradient(linear, to bottom right, to top left, color-stop(0%, #c1d3dd), color-stop(20%, #6494c4), color-stop(100%, #1d5894));
+  background-image: -webkit-linear-gradient(to bottom right, #c1d3dd, #6494c4 20%, #1d5894);
+  background-image: -moz-linear-gradient(to bottom right, #c1d3dd, #6494c4 20%, #1d5894);
+  background-image: -o-linear-gradient(to bottom right, #c1d3dd, #6494c4 20%, #1d5894);
+  background-image: linear-gradient(to bottom right, #c1d3dd, #6494c4 20%, #1d5894);
   border-top: 1px solid #C1D3DD;
   border-left: 1px solid #C1D3DD;
   -webkit-border-radius: 4px;
@@ -749,26 +755,16 @@ header[role=banner] nav ul a {
 }
 /* line 112, ../sass/partials/_item.scss */
 #item_info #bottom_line {
-  text-align: right;
+  text-align: left;
 }
-/* line 115, ../sass/partials/_item.scss */
-#item_info #weight_and_d {
-  display: inline-block;
-  /*background: #697EAF;*/
-}
-/* line 120, ../sass/partials/_item.scss */
-#item_info #price_and_status {
+/* line 116, ../sass/partials/_item.scss */
+#item_info #price {
   position: relative;
   display: inline-block;
-  right: 200px;
-  /* background: #8C8C8C; */
-}
-/* line 126, ../sass/partials/_item.scss */
-#item_info #price_and_status span {
   margin: 0 10px 0 0;
 }
 
-/* line 133, ../sass/partials/_item.scss */
+/* line 123, ../sass/partials/_item.scss */
 #item_buttons {
   position: relative;
   display: inline-block;
@@ -776,13 +772,13 @@ header[role=banner] nav ul a {
   left: 10px;
 }
 
-/* line 143, ../sass/partials/_item.scss */
+/* line 133, ../sass/partials/_item.scss */
 .button_container {
   position: relative;
   display: inline-block;
 }
 
-/* line 148, ../sass/partials/_item.scss */
+/* line 138, ../sass/partials/_item.scss */
 .item_button {
   display: inline-block;
   padding: 0;
@@ -803,7 +799,7 @@ header[role=banner] nav ul a {
   box-shadow: 0px 2px 2px #727272;
 }
 
-/* line 165, ../sass/partials/_item.scss */
+/* line 155, ../sass/partials/_item.scss */
 .light {
   top: 1px;
   height: 1px;

@@ -4,8 +4,11 @@ require_once '_class/Database.php';
 require_once '_class/Admin_page.php';
 require_once '_class/Token.php';
 require_once '_class/Item_transfer.php';
+require_once '_class/Image_transfer.php';
+
 $admin = new Admin_page;
 $item = new Item_transfer;
+$img = new Image_transfer;
 
 // Authentication
 $display_admin = FALSE;
@@ -75,28 +78,74 @@ if ($display_admin === FALSE && count($_COOKIE) > 0 && !empty($_COOKIE['token'])
 <?php
 require_once './partial_php/_banner.php';
 
-
+$item_id = '';
+$output = '';
+$msg = array();
 // Display
 if ($display_admin)
 {
-	echo $admin->display_admin();
-	
-	if (!empty($_POST['submit'])) {
-		$item->submit_item();
-	}
+	if (!empty($_POST['submit']))
+   {
+      switch ($_POST['submit'])
+      {
+         case 'new':
+            $submit_result = $item->submit_item();
+            $msg = array_merge($msg, $submit_result['msg']);
+            $item_id = $submit_result['item_id'];
 
-	$admin->display_latest_items();
+            $save_img_result = $img->save_images($item_id);
+            $msg = array_merge($msg, $save_img_result['msg']);
+            break;
+         
+         default:
+            if (is_numeric( $_POST['submit'] ))
+            {
+               $item_id = $_POST['submit'];
+               $item_id = $item->update_item($item_id);
+               $img = new Image_transfer;
+               $img->save_images($item_id);
+            }
+            break;
+      }
+
+	}
+   else
+   {
+      if (!empty($_GET['item']))
+      {
+         $item_id = $_GET['item'];
+      }
+   }
+   
+   // New item form
+   $output .= $admin->display_form();
+   // Hidden edit form
+   $output .= $admin->display_form($item_id);
+   // Item
+   $output .= $admin->display_item($item_id); 
+   // Messages
+   foreach ($msg as $key => $value) {  
+
+      $output .= "</br>{$value}";
+   }
+   
 } 
 else
 {
-	echo $admin->display_login();
+	$output .= $admin->display_login();
 }
+
+echo <<<ADMIN
+$output
+ADMIN;
+
 
 ?>
 
 <!-- JS for 'Confirm Navigation' -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>      
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>    
+<script src="js/vendor/jquery-ui.min.js"></script>  
 
 <script src="js/plugins.js"></script>
 <script src="js/admin.js"></script>

@@ -20,7 +20,7 @@ class Gallery_page
 
       // Put items/data cells in array $data_cells
       foreach ($items as $key => $value) {
-         $item_link = './item.php?id="{$items[$key]["id"]}';
+         $item_link = "./item.php?id={$items[$key]['id']}";
          $description   = $items[$key]['description'];
          $price         = $items[$key]['price'];
          

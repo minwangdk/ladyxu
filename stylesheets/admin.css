@@ -1,4 +1,4 @@
-/* line 33, ../sass/partials/_base.scss */
+/* line 36, ../sass/partials/_base.scss */
 body {
   margin: 0;
   padding: 0;
@@ -609,43 +609,231 @@ header[role=banner] nav ul a {
   height: 100%;
 }
 
-/* line 5, ../sass/partials/_admin.scss */
-h1 {
-  margin-top: 0;
+/* line 1, ../sass/partials/_item_single_item.scss */
+#single_item {
+  position: absolute;
+  display: block;
+  height: 1000px;
+  width: 800px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  *zoom: 1;
+  /*background:#DFDFDF;*/
 }
 
-/* line 9, ../sass/partials/_admin.scss */
-ul {
+/*tag hole with white hole inside*/
+/* line 16, ../sass/partials/_item_single_item.scss */
+.tag_hole {
+  position: absolute;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  right: 20px;
+  top: 10px;
+  background-color: #6f1123;
+}
+/* line 25, ../sass/partials/_item_single_item.scss */
+.tag_hole div {
+  position: absolute;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  right: 29%;
+  bottom: 29%;
+  background-color: #FFFFFF;
+  background-image: -webkit-gradient(linear, to bottom right, to top left, color-stop(0%, #535353), color-stop(35%, #dddddd), color-stop(50%, #ffffff), color-stop(100%, #ffffff));
+  background-image: -webkit-linear-gradient(to bottom right, #535353, #dddddd 35%, #ffffff 50%, #ffffff);
+  background-image: -moz-linear-gradient(to bottom right, #535353, #dddddd 35%, #ffffff 50%, #ffffff);
+  background-image: -o-linear-gradient(to bottom right, #535353, #dddddd 35%, #ffffff 50%, #ffffff);
+  background-image: linear-gradient(to bottom right, #535353, #dddddd 35%, #ffffff 50%, #ffffff);
+}
+
+/* line 39, ../sass/partials/_item_single_item.scss */
+#medium_img_box {
+  display: inline;
+  float: left;
+  margin: 30px auto 0;
+}
+/* line 43, ../sass/partials/_item_single_item.scss */
+#medium_img_box img {
+  display: block;
+  margin: 0 0 10px;
+  -webkit-box-shadow: 3px 3px 4px #949494;
+  -moz-box-shadow: 3px 3px 4px #949494;
+  box-shadow: 3px 3px 4px #949494;
+}
+
+/* line 50, ../sass/partials/_item_single_item.scss */
+#item_info {
+  display: inline-block;
+  position: relative;
+  width: 430px;
+  left: 10px;
+  margin: 30px 0 0 0;
+  padding: 20px 20px;
+  line-height: 130%;
+  background-color: #f3e8ba;
+  border: 2px solid #EFE0A3;
+  -webkit-box-shadow: 7px 7px 14px #aeaeae;
+  -moz-box-shadow: 7px 7px 14px #aeaeae;
+  box-shadow: 7px 7px 14px #aeaeae;
+}
+/* line 66, ../sass/partials/_item_single_item.scss */
+#item_info div {
+  margin: 10px 0 0;
+}
+/* line 69, ../sass/partials/_item_single_item.scss */
+#item_info p {
+  margin: 0.25em 0;
+}
+/* line 73, ../sass/partials/_item_single_item.scss */
+#item_info h3 {
   margin: 0;
-  padding: 0;
-  list-style: none;
+  width: 300px;
+  border-bottom: 2px solid #6f1123;
 }
-
-/* line 15, ../sass/partials/_admin.scss */
-form {
+/* line 80, ../sass/partials/_item_single_item.scss */
+#item_info #specification p {
+  text-align: left;
+  margin-top: 30px;
+}
+/* line 84, ../sass/partials/_item_single_item.scss */
+#item_info #specification p span {
+  margin: 0 8px 0 0;
+  padding: 10px 14px;
+  background-image: -webkit-gradient(linear, to bottom right, to top left, color-stop(0%, #c1d3dd), color-stop(20%, #6494c4), color-stop(100%, #1d5894));
+  background-image: -webkit-linear-gradient(to bottom right, #c1d3dd, #6494c4 20%, #1d5894);
+  background-image: -moz-linear-gradient(to bottom right, #c1d3dd, #6494c4 20%, #1d5894);
+  background-image: -o-linear-gradient(to bottom right, #c1d3dd, #6494c4 20%, #1d5894);
+  background-image: linear-gradient(to bottom right, #c1d3dd, #6494c4 20%, #1d5894);
+  border-top: 1px solid #C1D3DD;
+  border-left: 1px solid #C1D3DD;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 1px 1px 1px #888888;
+  -moz-box-shadow: 1px 1px 1px #888888;
+  box-shadow: 1px 1px 1px #888888;
+  color: white;
+  font-family: "Champagne", Tahoma, Helvetica, Arial, STXihei, "华文细黑", serif;
+  font-size: 20px;
+}
+/* line 99, ../sass/partials/_item_single_item.scss */
+#item_info #specification p #quality {
+  font-size: 26px;
+  padding: 4px 14px 8px;
+  letter-spacing: 1px;
+}
+/* line 107, ../sass/partials/_item_single_item.scss */
+#item_info #item_details {
+  width: auto;
+  margin-top: 30px;
+  border-bottom: 2px solid #6f1123;
+}
+/* line 112, ../sass/partials/_item_single_item.scss */
+#item_info #bottom_line {
+  text-align: left;
+}
+/* line 116, ../sass/partials/_item_single_item.scss */
+#item_info #price {
   position: relative;
   display: inline-block;
+  margin: 0 10px 0 0;
+}
+
+/* line 123, ../sass/partials/_item_single_item.scss */
+#item_buttons {
+  position: relative;
+  display: inline-block;
+  margin: 20px 20px;
+  left: 10px;
+}
+
+/* line 133, ../sass/partials/_item_single_item.scss */
+.button_container {
+  position: relative;
+  display: inline-block;
+}
+
+/* line 138, ../sass/partials/_item_single_item.scss */
+.item_button {
+  display: inline-block;
+  padding: 0;
+  height: 30px;
+  width: 130px;
+  background-color: #6f1123;
+  color: white;
+  font-weight: bold;
+  border: none;
+  box-sizing: none;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-shadow: 0px 2px 2px #727272;
+  -moz-box-shadow: 0px 2px 2px #727272;
+  box-shadow: 0px 2px 2px #727272;
+}
+
+/* line 155, ../sass/partials/_item_single_item.scss */
+.light {
+  top: 1px;
+  height: 1px;
+  position: absolute;
+  width: 100%;
+  background-image: -webkit-gradient(linear, to right, to left, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(35%, rgba(255, 255, 255, 0.6)), color-stop(70%, rgba(255, 255, 255, 0.6)), color-stop(100%, rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.6) 35%, rgba(255, 255, 255, 0.6) 70%, rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.6) 35%, rgba(255, 255, 255, 0.6) 70%, rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.6) 35%, rgba(255, 255, 255, 0.6) 70%, rgba(255, 255, 255, 0));
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.6) 35%, rgba(255, 255, 255, 0.6) 70%, rgba(255, 255, 255, 0));
+}
+
+/* line 4, ../sass/partials/_admin_new_item_form.scss */
+#new_item_form {
+  display: inline;
+  float: left;
   width: 400px;
   margin: 10px 0 0 10px;
   padding: 1em;
   border: 1px solid #CCC;
   border-radius: 1em;
 }
-
-/* line 25, ../sass/partials/_admin.scss */
-select {
+/* line 12, ../sass/partials/_admin_new_item_form.scss */
+#new_item_form h1 {
+  margin-top: 0;
+}
+/* line 16, ../sass/partials/_admin_new_item_form.scss */
+#new_item_form ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* line 26, ../sass/partials/_admin_new_item_form.scss */
+#new_item_form select {
   background: #E9F4FC;
 }
-
-/* line 29, ../sass/partials/_admin.scss */
-label span {
+/* line 30, ../sass/partials/_admin_new_item_form.scss */
+#new_item_form label span {
   display: inline-block;
   width: 125px;
   text-align: right;
 }
-
-/* line 35, ../sass/partials/_admin.scss */
-input, textarea {
+/* line 36, ../sass/partials/_admin_new_item_form.scss */
+#new_item_form input, #new_item_form textarea {
   font: 1em sans-serif;
   width: 250px;
   -webkit-box-sizing: border-box;
@@ -653,56 +841,48 @@ input, textarea {
   box-sizing: border-box;
   border: 1px solid #999;
 }
-
-/* line 44, ../sass/partials/_admin.scss */
-input[type=text] {
+/* line 45, ../sass/partials/_admin_new_item_form.scss */
+#new_item_form input[type=text] {
   width: 100px;
 }
-
-/* line 48, ../sass/partials/_admin.scss */
-input[type=checkbox], input[type=radio] {
+/* line 49, ../sass/partials/_admin_new_item_form.scss */
+#new_item_form input[type=checkbox], #new_item_form input[type=radio] {
   width: auto;
   border: none;
 }
-
-/* line 53, ../sass/partials/_admin.scss */
-input:focus, textarea:focus {
+/* line 54, ../sass/partials/_admin_new_item_form.scss */
+#new_item_form input:focus, #new_item_form textarea:focus {
   border-color: #000;
 }
-
-/* line 57, ../sass/partials/_admin.scss */
-textarea {
+/* line 58, ../sass/partials/_admin_new_item_form.scss */
+#new_item_form textarea {
   vertical-align: top;
   height: 4em;
   resize: vertical;
 }
-
-/* line 65, ../sass/partials/_admin.scss */
-#details {
+/* line 66, ../sass/partials/_admin_new_item_form.scss */
+#new_item_form #details {
   height: 8em;
 }
-
-/* line 69, ../sass/partials/_admin.scss */
-fieldset {
+/* line 70, ../sass/partials/_admin_new_item_form.scss */
+#new_item_form fieldset {
   width: 250px;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   margin-left: 124px;
   border: 1px solid #999;
 }
-
-/* line 79, ../sass/partials/_admin.scss */
-#form-buttons {
+/* line 80, ../sass/partials/_admin_new_item_form.scss */
+#new_item_form #form-buttons {
   margin-top: 33px;
   border-top: 1px dotted #8A8A8A;
 }
-
-/* line 84, ../sass/partials/_admin.scss */
-button {
+/* line 85, ../sass/partials/_admin_new_item_form.scss */
+#new_item_form button {
   margin-left: 47px;
 }
-/* line 87, ../sass/partials/_admin.scss */
-button p {
+/* line 88, ../sass/partials/_admin_new_item_form.scss */
+#new_item_form button p {
   height: 20px;
   margin: 5px;
   padding: 0px;
@@ -711,32 +891,44 @@ button p {
   user-select: none;
 }
 
-/* line 95, ../sass/partials/_admin.scss */
-#records {
+/* line 97, ../sass/partials/_admin_new_item_form.scss */
+#new_item_form:after {
+  overflow: hidden;
+  *zoom: 1;
+}
+
+/* line 1, ../sass/partials/_admin.scss */
+#small_img_box {
+  position: relative;
+  display: inline-block;
+  margin: 10px 0 0 10px;
+  padding: 0;
+  width: 400px;
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 10, ../sass/partials/_admin.scss */
+#small_img_box .small_img {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 100px;
+  display: inline;
+  float: left;
+}
+/* line 16, ../sass/partials/_admin.scss */
+#small_img_box .small_img img {
   position: absolute;
-  display: inline-block;
-  left: 470px;
-  top: 140px;
+  bottom: 0;
+  width: 80px;
 }
-
-/* line 102, ../sass/partials/_admin.scss */
-.pics {
-  position: relative;
-  display: block;
-  top: 0px;
-}
-
-/* line 111, ../sass/partials/_admin.scss */
-.details {
-  position: relative;
-  display: inline-block;
-  right: 10px;
-  top: -20px;
-}
-
-/* line 122, ../sass/partials/_admin.scss */
-.pictures {
-  border: 2px solid maroon;
+/* line 21, ../sass/partials/_admin.scss */
+#small_img_box .small_img .img_order {
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  color: red;
+  font-size: 1em;
 }
 
 /* line 7, ../../../../Users/Min/Desktop/Programming/compass.app/lib/ruby/compass_extensions/compass-h5bp-0.1.1/stylesheets/h5bp/_helpers.scss */

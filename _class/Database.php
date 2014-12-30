@@ -64,11 +64,11 @@ class Database {
         return $this->stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function rowCount(){
+    public function row_count(){
         return $this->stmt->rowCount();
     }
 
-    public function lastID(){
+    public function last_id(){
         return $this->dbh->lastInsertId();
     }
 
@@ -84,7 +84,7 @@ class Database {
         return $this->dbh->rollBack();
     }
 
-    public function debugDumpParams(){
+    public function debug_dump_params(){
         return $this->stmt->debugDumpParams();
     }
 

@@ -2465,3 +2465,158 @@ Load paths:
 2014-12-19 19:41:35 overwrite stylesheets/gallery.css 
 2014-12-19 19:43:37 overwrite stylesheets/gallery.css 
 2014-12-19 19:44:01 overwrite stylesheets/gallery.css 
+2014-12-19 23:14:10 overwrite stylesheets/item.css 
+2014-12-20 10:03:49 overwrite stylesheets/admin.css 
+2014-12-20 10:03:51 identical stylesheets/item.css 
+2014-12-20 10:04:04 overwrite stylesheets/admin.css 
+2014-12-20 10:04:13 overwrite stylesheets/admin.css 
+2014-12-20 10:04:21 overwrite stylesheets/admin.css 
+2014-12-20 10:27:40     error sass/admin.scss (Line 10 of sass/partials/_item_single_item.scss: Undefined mixin 'clearfix'.)
+2014-12-20 10:27:40 overwrite stylesheets/admin.css 
+2014-12-20 10:30:01     error sass/item.scss (Line 10 of sass/partials/_item_single_item.scss: Undefined mixin 'clearfix'.)
+2014-12-20 10:30:01 overwrite stylesheets/item.css 
+2014-12-20 10:30:11 overwrite stylesheets/admin.css 
+2014-12-20 10:30:12 overwrite stylesheets/gallery.css 
+2014-12-20 10:30:13 overwrite stylesheets/index.css 
+2014-12-20 10:30:14 overwrite stylesheets/item.css 
+2014-12-20 10:32:42 overwrite stylesheets/admin.css 
+2014-12-20 10:33:04 overwrite stylesheets/admin.css 
+2014-12-20 10:34:56 identical stylesheets/admin.css 
+2014-12-20 10:36:36 overwrite stylesheets/admin.css 
+2014-12-20 10:36:36 overwrite stylesheets/item.css 
+2014-12-20 10:37:42 overwrite stylesheets/admin.css 
+2014-12-20 10:37:43 overwrite stylesheets/item.css 
+2014-12-20 10:39:51 overwrite stylesheets/admin.css 
+2014-12-20 10:39:51 overwrite stylesheets/item.css 
+2014-12-21 13:51:33 overwrite stylesheets/admin.css 
+2014-12-21 13:51:37 identical stylesheets/admin.css 
+2014-12-21 13:51:47 overwrite stylesheets/admin.css 
+2014-12-21 13:52:21 overwrite stylesheets/admin.css 
+2014-12-21 13:56:34 overwrite stylesheets/admin.css 
+2014-12-21 13:57:08     error sass/admin.scss (Line 23: File to import not found or unreadable: partials/admin_new_item_form.
+Load paths:
+  C:/wamp/www/ladyxu/sass
+  C:/Users/Min/Desktop/Programming/compass.app/lib/ruby/compass_0.12/compass-0.12.2/frameworks/blueprint/stylesheets
+  C:/Users/Min/Desktop/Programming/compass.app/lib/ruby/compass_0.12/compass-0.12.2/frameworks/compass/stylesheets
+  C:/Users/Min/Desktop/Programming/compass.app/lib/ruby/compass_extensions/compass-960-plugin-0.10.4/stylesheets
+  C:/Users/Min/Desktop/Programming/compass.app/lib/ruby/compass_extensions/compass-h5bp-0.1.1/stylesheets
+  C:/Users/Min/Desktop/Programming/compass.app/lib/ruby/compass_extensions/compass-normalize-1.4.3/stylesheets
+  C:/Users/Min/Desktop/Programming/compass.app/lib/ruby/compass_extensions/bootstrap-sass-2.3.2.1/vendor/assets/stylesheets
+  C:/Users/Min/Desktop/Programming/compass.app/lib/ruby/compass_extensions/susy-1.0.9/sass
+  C:/Users/Min/Desktop/Programming/compass.app/lib/ruby/compass_extensions/zurb-foundation-4.3.1/scss
+  Compass::SpriteImporter
+  C:/Users/Min/Desktop/Programming/vendor/assets/stylesheets)
+2014-12-21 13:57:08 overwrite stylesheets/admin.css 
+2014-12-21 13:57:19 overwrite stylesheets/admin.css 
+2014-12-21 14:01:07 overwrite stylesheets/admin.css 
+2014-12-21 14:03:34 overwrite stylesheets/admin.css 
+2014-12-21 14:03:57 overwrite stylesheets/admin.css 
+2014-12-21 14:04:29 overwrite stylesheets/admin.css 
+2014-12-21 14:05:05 overwrite stylesheets/admin.css 
+2014-12-21 14:09:22     error sass/admin.scss (Line 11 of sass/partials/_admin.scss: Invalid CSS after "}": expected "}", was "")
+2014-12-21 14:09:22 overwrite stylesheets/admin.css 
+2014-12-21 14:09:23     error sass/admin.scss (Line 11 of sass/partials/_admin.scss: Invalid CSS after "}": expected "}", was "")
+2014-12-21 14:09:23 identical stylesheets/admin.css 
+2014-12-21 14:09:48 overwrite stylesheets/admin.css 
+2014-12-21 14:11:11 overwrite stylesheets/admin.css 
+2014-12-21 14:13:40 overwrite stylesheets/admin.css 
+2014-12-21 14:13:55 overwrite stylesheets/admin.css 
+2014-12-21 14:14:29 identical stylesheets/admin.css 
+2014-12-21 14:20:02 overwrite stylesheets/admin.css 
+2014-12-21 14:24:21 overwrite stylesheets/admin.css 
+2014-12-21 14:25:53 overwrite stylesheets/admin.css 
+2014-12-21 14:26:58 overwrite stylesheets/admin.css 
+2014-12-21 14:29:26 overwrite stylesheets/admin.css 
+2014-12-21 14:29:38 overwrite stylesheets/admin.css 
+2014-12-21 14:30:11 overwrite stylesheets/admin.css 
+2014-12-21 14:30:33 overwrite stylesheets/admin.css 
+2014-12-21 14:30:45 overwrite stylesheets/admin.css 
+2014-12-21 14:30:55 identical stylesheets/admin.css 
+2014-12-21 14:32:57 overwrite stylesheets/admin.css 
+2014-12-21 14:34:05 overwrite stylesheets/admin.css 
+2014-12-21 14:34:38 overwrite stylesheets/admin.css 
+2014-12-21 14:35:52 overwrite stylesheets/admin.css 
+2014-12-21 14:37:05 overwrite stylesheets/admin.css 
+2014-12-21 14:37:30 overwrite stylesheets/admin.css 
+2014-12-21 14:38:18 overwrite stylesheets/admin.css 
+2014-12-21 14:39:24 overwrite stylesheets/admin.css 
+2014-12-21 14:39:32 overwrite stylesheets/admin.css 
+2014-12-21 14:39:52 overwrite stylesheets/admin.css 
+2014-12-21 14:41:30 overwrite stylesheets/admin.css 
+2014-12-21 14:42:05 overwrite stylesheets/admin.css 
+2014-12-21 14:42:40 overwrite stylesheets/admin.css 
+2014-12-21 14:42:53 overwrite stylesheets/admin.css 
+2014-12-21 14:43:11 overwrite stylesheets/admin.css 
+2014-12-21 14:44:04 overwrite stylesheets/admin.css 
+2014-12-21 14:44:25 overwrite stylesheets/admin.css 
+2014-12-21 14:45:01 overwrite stylesheets/admin.css 
+2014-12-21 14:45:32 overwrite stylesheets/admin.css 
+2014-12-21 14:46:01 overwrite stylesheets/admin.css 
+2014-12-21 14:46:16 overwrite stylesheets/admin.css 
+2014-12-21 14:47:07 overwrite stylesheets/admin.css 
+2014-12-21 14:49:20 overwrite stylesheets/admin.css 
+2014-12-21 14:50:35 overwrite stylesheets/admin.css 
+2014-12-21 14:53:58 overwrite stylesheets/admin.css 
+2014-12-21 14:54:30 overwrite stylesheets/admin.css 
+2014-12-21 14:54:47 overwrite stylesheets/admin.css 
+2014-12-21 14:56:53 overwrite stylesheets/admin.css 
+2014-12-21 14:59:03 overwrite stylesheets/admin.css 
+2014-12-21 15:01:34 overwrite stylesheets/admin.css 
+2014-12-21 15:01:51 overwrite stylesheets/admin.css 
+2014-12-21 15:03:01 overwrite stylesheets/admin.css 
+2014-12-21 15:03:08 overwrite stylesheets/admin.css 
+2014-12-21 15:04:21     error sass/admin.scss (Line 7 of sass/partials/_admin.scss: Invalid CSS after "      display": expected ";", was ": inline-block;")
+2014-12-21 15:04:21 overwrite stylesheets/admin.css 
+2014-12-21 15:04:22     error sass/admin.scss (Line 7 of sass/partials/_admin.scss: Invalid CSS after "      display": expected ";", was ": inline-block;")
+2014-12-21 15:04:22 identical stylesheets/admin.css 
+2014-12-21 15:04:30 overwrite stylesheets/admin.css 
+2014-12-21 15:05:20 overwrite stylesheets/admin.css 
+2014-12-21 15:05:24 overwrite stylesheets/admin.css 
+2014-12-21 15:06:44 overwrite stylesheets/admin.css 
+2014-12-21 15:08:04 overwrite stylesheets/admin.css 
+2014-12-21 15:08:14 overwrite stylesheets/admin.css 
+2014-12-21 15:08:40 overwrite stylesheets/admin.css 
+2014-12-21 15:08:54 overwrite stylesheets/admin.css 
+2014-12-21 15:09:08 overwrite stylesheets/admin.css 
+2014-12-21 15:09:32 overwrite stylesheets/admin.css 
+2014-12-21 15:12:34 overwrite stylesheets/admin.css 
+2014-12-21 18:25:08 overwrite stylesheets/admin.css 
+2014-12-21 18:28:33 overwrite stylesheets/admin.css 
+2014-12-21 18:29:33 overwrite stylesheets/admin.css 
+2014-12-21 18:30:16     error sass/admin.scss (Line 13 of sass/partials/_admin.scss: Invalid CSS after "         bottom:": expected expression (e.g. 1px, bold), was ";")
+2014-12-21 18:30:16 overwrite stylesheets/admin.css 
+2014-12-21 18:30:18     error sass/admin.scss (Line 13 of sass/partials/_admin.scss: Invalid CSS after "         bottom:": expected expression (e.g. 1px, bold), was ";")
+2014-12-21 18:30:18 identical stylesheets/admin.css 
+2014-12-21 18:30:29 overwrite stylesheets/admin.css 
+2014-12-21 18:30:43 overwrite stylesheets/admin.css 
+2014-12-21 18:33:59 overwrite stylesheets/admin.css 
+2014-12-21 18:34:24 overwrite stylesheets/admin.css 
+2014-12-21 18:34:31 overwrite stylesheets/admin.css 
+2014-12-21 18:34:44 overwrite stylesheets/admin.css 
+2014-12-21 18:35:09 overwrite stylesheets/admin.css 
+2014-12-21 18:35:20 overwrite stylesheets/admin.css 
+2014-12-21 18:36:24 overwrite stylesheets/admin.css 
+2014-12-21 18:38:16 overwrite stylesheets/admin.css 
+2014-12-21 18:38:38 overwrite stylesheets/admin.css 
+2014-12-21 18:39:50 overwrite stylesheets/admin.css 
+2014-12-21 19:50:59 overwrite stylesheets/admin.css 
+2014-12-21 19:53:06 overwrite stylesheets/admin.css 
+2014-12-21 19:53:17 overwrite stylesheets/admin.css 
+2014-12-21 19:53:59 overwrite stylesheets/admin.css 
+2014-12-21 19:54:22 overwrite stylesheets/admin.css 
+2014-12-21 19:54:39 overwrite stylesheets/admin.css 
+2014-12-21 19:54:47 overwrite stylesheets/admin.css 
+2014-12-21 19:55:13     error sass/admin.scss (Line 15 of sass/partials/_admin.scss: Invalid CSS after "         height": expected ";", was ": 100px;")
+2014-12-21 19:55:13 overwrite stylesheets/admin.css 
+2014-12-21 19:55:14     error sass/admin.scss (Line 15 of sass/partials/_admin.scss: Invalid CSS after "         height": expected ";", was ": 100px;")
+2014-12-21 19:55:14 identical stylesheets/admin.css 
+2014-12-21 19:55:25 overwrite stylesheets/admin.css 
+2014-12-21 19:55:44 overwrite stylesheets/admin.css 
+2014-12-21 19:58:11 overwrite stylesheets/admin.css 
+2014-12-21 19:58:54 overwrite stylesheets/admin.css 
+2014-12-21 19:59:05 overwrite stylesheets/admin.css 
+2014-12-21 20:00:33 overwrite stylesheets/admin.css 
+2014-12-21 20:00:50 overwrite stylesheets/admin.css 
+2014-12-21 20:01:00 overwrite stylesheets/admin.css 
+2014-12-21 20:01:49 overwrite stylesheets/admin.css 
+2014-12-21 20:02:20 overwrite stylesheets/admin.css 

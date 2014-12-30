@@ -43,9 +43,9 @@ $output = "
    {$item_buttons}
 </section>";
 
-echo <<<ITEMS
+echo <<<ITEM
 $output
-ITEMS;
+ITEM;
 
 
 ?>

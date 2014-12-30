@@ -200,7 +200,7 @@ class Item_page
       <div id='specification'>
          <p><span>{$region}</span><span>{$age}</span><span id='quality'>{$quality}</span></p>
       </div>
-      <div id='details'>
+      <div id='item_details'>
          <p>{$details}</p>
       </div>  
       <div id='bottom_line'>

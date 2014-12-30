@@ -1,4 +1,4 @@
-/* line 33, ../sass/partials/_base.scss */
+/* line 36, ../sass/partials/_base.scss */
 body {
   margin: 0;
   padding: 0;
@@ -619,7 +619,7 @@ header[role=banner] nav ul a {
   background: #0FAA22;
 }
 
-/* line 1, ../sass/partials/_item.scss */
+/* line 1, ../sass/partials/_item_single_item.scss */
 #single_item {
   position: absolute;
   display: block;
@@ -635,7 +635,7 @@ header[role=banner] nav ul a {
 }
 
 /*tag hole with white hole inside*/
-/* line 16, ../sass/partials/_item.scss */
+/* line 16, ../sass/partials/_item_single_item.scss */
 .tag_hole {
   position: absolute;
   -webkit-border-radius: 50%;
@@ -649,7 +649,7 @@ header[role=banner] nav ul a {
   top: 10px;
   background-color: #6f1123;
 }
-/* line 25, ../sass/partials/_item.scss */
+/* line 25, ../sass/partials/_item_single_item.scss */
 .tag_hole div {
   position: absolute;
   -webkit-border-radius: 50%;
@@ -669,13 +669,13 @@ header[role=banner] nav ul a {
   background-image: linear-gradient(to bottom right, #535353, #dddddd 35%, #ffffff 50%, #ffffff);
 }
 
-/* line 39, ../sass/partials/_item.scss */
+/* line 39, ../sass/partials/_item_single_item.scss */
 #medium_img_box {
   display: inline;
   float: left;
   margin: 30px auto 0;
 }
-/* line 43, ../sass/partials/_item.scss */
+/* line 43, ../sass/partials/_item_single_item.scss */
 #medium_img_box img {
   display: block;
   margin: 0 0 10px;
@@ -684,7 +684,7 @@ header[role=banner] nav ul a {
   box-shadow: 3px 3px 4px #949494;
 }
 
-/* line 50, ../sass/partials/_item.scss */
+/* line 50, ../sass/partials/_item_single_item.scss */
 #item_info {
   display: inline-block;
   position: relative;
@@ -699,26 +699,26 @@ header[role=banner] nav ul a {
   -moz-box-shadow: 7px 7px 14px #aeaeae;
   box-shadow: 7px 7px 14px #aeaeae;
 }
-/* line 66, ../sass/partials/_item.scss */
+/* line 66, ../sass/partials/_item_single_item.scss */
 #item_info div {
   margin: 10px 0 0;
 }
-/* line 69, ../sass/partials/_item.scss */
+/* line 69, ../sass/partials/_item_single_item.scss */
 #item_info p {
   margin: 0.25em 0;
 }
-/* line 73, ../sass/partials/_item.scss */
+/* line 73, ../sass/partials/_item_single_item.scss */
 #item_info h3 {
   margin: 0;
   width: 300px;
   border-bottom: 2px solid #6f1123;
 }
-/* line 80, ../sass/partials/_item.scss */
+/* line 80, ../sass/partials/_item_single_item.scss */
 #item_info #specification p {
   text-align: left;
   margin-top: 30px;
 }
-/* line 84, ../sass/partials/_item.scss */
+/* line 84, ../sass/partials/_item_single_item.scss */
 #item_info #specification p span {
   margin: 0 8px 0 0;
   padding: 10px 14px;
@@ -741,30 +741,30 @@ header[role=banner] nav ul a {
   font-family: "Champagne", Tahoma, Helvetica, Arial, STXihei, "华文细黑", serif;
   font-size: 20px;
 }
-/* line 99, ../sass/partials/_item.scss */
+/* line 99, ../sass/partials/_item_single_item.scss */
 #item_info #specification p #quality {
   font-size: 26px;
   padding: 4px 14px 8px;
   letter-spacing: 1px;
 }
-/* line 107, ../sass/partials/_item.scss */
-#item_info #details {
+/* line 107, ../sass/partials/_item_single_item.scss */
+#item_info #item_details {
   width: auto;
   margin-top: 30px;
   border-bottom: 2px solid #6f1123;
 }
-/* line 112, ../sass/partials/_item.scss */
+/* line 112, ../sass/partials/_item_single_item.scss */
 #item_info #bottom_line {
   text-align: left;
 }
-/* line 116, ../sass/partials/_item.scss */
+/* line 116, ../sass/partials/_item_single_item.scss */
 #item_info #price {
   position: relative;
   display: inline-block;
   margin: 0 10px 0 0;
 }
 
-/* line 123, ../sass/partials/_item.scss */
+/* line 123, ../sass/partials/_item_single_item.scss */
 #item_buttons {
   position: relative;
   display: inline-block;
@@ -772,13 +772,13 @@ header[role=banner] nav ul a {
   left: 10px;
 }
 
-/* line 133, ../sass/partials/_item.scss */
+/* line 133, ../sass/partials/_item_single_item.scss */
 .button_container {
   position: relative;
   display: inline-block;
 }
 
-/* line 138, ../sass/partials/_item.scss */
+/* line 138, ../sass/partials/_item_single_item.scss */
 .item_button {
   display: inline-block;
   padding: 0;
@@ -799,7 +799,7 @@ header[role=banner] nav ul a {
   box-shadow: 0px 2px 2px #727272;
 }
 
-/* line 155, ../sass/partials/_item.scss */
+/* line 155, ../sass/partials/_item_single_item.scss */
 .light {
   top: 1px;
   height: 1px;

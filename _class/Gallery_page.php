@@ -14,7 +14,7 @@ class Gallery_page
       return $controls;
    }
 
-   public function item_browser($items, $items_per_row)
+   public function item_browser($items, $items_per_row = 4)
    {
       $data_cells = array();
 

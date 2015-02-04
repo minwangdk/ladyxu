@@ -110,13 +110,25 @@ LOGIN_FORM;
       $pNew = '';
       $pselected = 'selected';
 
+      //status
+      $sINSTORE = '';
+      $sSOLD = '';
+      $sselected = 'selected';
+
       $year = '';
       $price = '';
       $description = '';
       $details = '';
 
-      $submit = 'new';
+      $secondary_button = '<button type="reset" name="reset"><p>复位 Reset</p></button>';
+      $status_input = '';
 
+      $submit = 'new';
+      $submit_label = '创建项目 Create item';
+      $title = '新项目 New Item';
+      $created_date = '';
+
+      // Display form for updating item
       if (isset($item_id) && is_numeric($item_id))
       {
          $item = new Item_transfer;
@@ -143,22 +155,45 @@ LOGIN_FORM;
             $pselected = '';
          }
 
+         if (!empty($item_info['status']))
+         {
+            $status = "s" . $item_info['status'];
+            $$status = 'selected';
+            $sselected = '';
+         }
+
          $year =        $item_info['year'];
          $price =       $item_info['price'];
          $description = $item_info['description'];
          $details =     $item_info['details'];
 
+         $secondary_button = "<button type='button' name='delete' ><p>删除 Delete</p></button>";
+         $status_input = "
+         <p>
+            <label for='status'>
+               <span>状态</br>Status:</span>
+               <select id='status' name='status' >
+                  <option $sselected disabled></option>
+                  <option $sINSTORE value='INSTORE'>库存 IN STORE</option>
+                  <option $sSOLD value='SOLD'>卖出 SOLD</option>                  
+               </select>
+            </label>
+         </p>
+         ";
+
          $submit = $item_id;
+         $submit_label = '修改 Edit item';
+         $title = "修改项目 Edit Item #{$item_id}";
+         $created_date = $item_info['created'];
       }
 
       return <<<FORM_MARKUP
 <div id='new_item_form'>
    <form name='newItem' action="" method="post" enctype="multipart/form-data">
-      <h1>新项目 New Item</h1>
+      <h1>$title</h1>
 
       <section>
-         <h3>规范 Specification</h3>
-
+         <h3>规范 Specification {$created_date}</h3>
          <p>
             <label for="quality">
             <span>纯度</br>Quality:</span>
@@ -186,7 +221,6 @@ LOGIN_FORM;
                </select>
             </label>
          </p>
-
          <p>
             <label for="region">
                <span>地区</br>Region:</span>
@@ -204,8 +238,6 @@ LOGIN_FORM;
                </select>
             </label>
          </p>
-
-
          <p>
             <label for="period">
             <span>年代</br>Era:</span>
@@ -239,8 +271,8 @@ LOGIN_FORM;
                <input value='$price' type="text" id="price" name="price" />
             </label>
          </p>
+         $status_input
       </section>
-
       <section>
          <h3>描述 Description</h3>
 
@@ -259,7 +291,6 @@ LOGIN_FORM;
             </label>
          </p>     
       </section>
-
       <section>
          <h3>照片 Photos</h3>
 
@@ -269,12 +300,11 @@ LOGIN_FORM;
                <input type="file" multiple name="pictures[]" id="pictures" accept=".jpg,.jpeg"/>
             </label>
          </p>
-      </section>
-        
+      </section>        
       <section id='form-buttons'>
          <p>
-            <button type="submit" name="submit" value="$submit"><p>创建项目 Create item</p></button>
-            <button type="reset" name="reset" onclick="return confirm('您确重置吗? Please confirm or cancel the reset.')"><p>复位 Reset</p></button>
+            <button type="submit" name="submit" value="$submit"><p>$submit_label</p></button>
+            $secondary_button
          </p>
       </section>
    </form>
@@ -317,36 +347,143 @@ FORM_MARKUP;
       return $display_item;
    }
 
-   public function sort_img_order($item_id)
-   {
-      $item_transfer = new Item_transfer;
-      $token = new Token;
-      $item_info = $item_transfer->single_item($item_id);
-
-      foreach ($_POST['order'] as $place => $old_img_number)
+   // $per_page is items per page 
+   public function display_item_chooser($item_id = NULL, $per_page = NULL)
+   {  
+      if ($per_page === NULL)
       {
-         foreach ($item_info['filepath'] as $size => $images)
+         $per_page = 20;
+      }
+
+      $start = NULL;
+      $item_transfer = new Item_transfer;
+
+      // how many rows are newer than $item_id ?
+      if (!empty($item_id) && is_numeric($item_id))
+      {
+         $db = new Database;
+         $query = "  SELECT COUNT(*)
+                     FROM items
+                     WHERE id > $item_id ";
+         $db->query($query);
+         $db->execute();
+         $result = $db->single();
+         $count = $result['COUNT(*)'];
+
+
+         // if newer rows > 0, then set start to the newest row, maximum half of items per page
+         if ($count > 0) // if current item is not the newest
          {
-            $path = $images[$old_img_number];
-            $path_parts = pathinfo($path);
-            $random_string = $token->random_text();
-
-            $bn = $path_parts['basename'];
-            $bn_pieces = explode("_", $bn, 2);
-            $fn = $bn_pieces[1];
-
-            if(!rename($path,
-               sprintf($path_parts['dirname'] . DIRECTORY_SEPARATOR . '%s_%s',
-                  $place + 1,
-                  $fn
-               )
-            ))
+            if ($count < ($per_page / 2)) // if the number of newer items is few, then start from the newest
             {
-               return "Failed to rename image: $path";
+               $start = NULL;
             }
+            else // else just start from a few items newer than current (- 3 means 4th newer item, making current item be number 5)
+            {
+               $start = $count - ($perpage / 2 - 2);
+            }
+         }
+         else
+         {
+            $start = NULL;
+         }
+      }
+      else
+      {
+         $start = NULL;
+      }
+
+      // 4 items before, 5 items after
+      $items = $item_transfer->fetch_items($start, $per_page);
+
+      
+      // display table
+
+      $data_cells = array();
+      $items_per_row = 6;
+
+      // Put items/data cells in array $data_cells
+      foreach ($items as $key => $value)
+      {
+         $item_link = "./admin.php?item={$items[$key]['id']}";
+         $description   = $items[$key]['description'];
+         $price         = $items[$key]['price'];
+         
+         //get first thumb of each item
+         if (!empty($items[$key]['filepath']['small'][0]))
+         {
+            $thumb_path = $items[$key]['filepath']['small'][0];
+            $item_id = $items[$key]['id'];
+         }
+         else // "No-Image picture"
+         {
+            $thumb_path = "./img/no_img.jpg";
+         }
+
+         $data_cells[] = "
+            <td>
+               <a href='{$item_link}'>
+                  <img src='{$thumb_path}' alt=''>
+               </a>
+               <div class='item_number'>{$item_id}</div>
+            </td>";
+      }
+
+      $table_data = '';
+      $item_counter = 0;
+      foreach ($data_cells as $value)
+      {
+         if ($item_counter === 1)
+         {     
+            $table_data .= "\n         <tr>";
+         }
+
+         if ($item_counter === 0)
+         {     
+            $table_data .= "<tr>";
+            $item_counter = 1;
+         }
+
+         $table_data .= $value;
+
+         if ($item_counter === $items_per_row) 
+         {
+            $table_data .= "
+         </tr>";
+            $item_counter = 1;
+         } 
+         else
+         {
+            $item_counter += 1;      
          }
       }
 
-      return "Images sorted and renamed.";            
+      if ($item_counter !== 1)
+      {
+         $table_data .= "
+         </tr>";
+      }
+
+      $item_chooser = 
+  "<table id='item_table'>
+      <tbody>
+         {$table_data}
+      </tbody>
+   </table>";
+
+      // get the first picture of each item_id
+      // place item picture in grid with item_id overlay
+
+      // next page, prev page
+
+      // input box for getting item by id
+      // use $item_id by default to switch to certain page
+
+      $display_item_chooser = "
+<section id='item_chooser'>   
+   {$item_chooser}
+</section>";
+
+      return $display_item_chooser;
    }
 }

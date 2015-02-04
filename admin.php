@@ -78,7 +78,7 @@ if ($display_admin === FALSE && count($_COOKIE) > 0 && !empty($_COOKIE['token'])
 <?php
 require_once './partial_php/_banner.php';
 
-$item_id = '';
+$item_id = NULL;
 $output = '';
 $msg = array();
 // Display
@@ -101,9 +101,12 @@ if ($display_admin)
             if (is_numeric( $_POST['submit'] ))
             {
                $item_id = $_POST['submit'];
-               $item_id = $item->update_item($item_id);
-               $img = new Image_transfer;
-               $img->save_images($item_id);
+               $update_result = $item->update_item($item_id);
+               $item_id = $update_result['item_id'];
+               $msg = array_merge($msg, $update_result['msg']);
+
+               $save_img_result = $img->save_images($item_id);
+               $msg = array_merge($msg, $save_img_result['msg']);
             }
             break;
       }
@@ -119,21 +122,32 @@ if ($display_admin)
    
    // New item form
    $output .= $admin->display_form();
-   // Hidden edit form
-   $output .= $admin->display_form($item_id);
-   // Item
-   $output .= $admin->display_item($item_id); 
-   // Messages
-   foreach ($msg as $key => $value) {  
 
+   if (!empty($item_id))
+   {
+      // Hidden edit form
+      $output .= $admin->display_form($item_id);
+      // Item
+      $output .= $admin->display_item($item_id);
+
+   }
+
+   // Display item chooser
+   $output .= $admin->display_item_chooser($item_id);
+
+   // Messages
+   foreach ($msg as $key => $value)
+   {
       $output .= "</br>{$value}";
    }
-   
 } 
 else
 {
 	$output .= $admin->display_login();
 }
+
+$output .= "
+<div id='debug'></div>";
 
 echo <<<ADMIN
 $output

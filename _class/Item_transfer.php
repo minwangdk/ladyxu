@@ -1,6 +1,8 @@
 <?php
 require_once 'Token.php';
 require_once 'Database.php';
+require_once '_filepath.php';
+
 
 class Item_transfer {
 
@@ -26,16 +28,28 @@ class Item_transfer {
       return $result; 
    }
 
-   public function fetch_items($first = 1, $many = 10) //get an array with details and image filepath from item $first to this many $many.
+   public function fetch_items($first = NULL, $many = NULL) //get an array with details and image filepath from item $first to this many $many.
    {
+      if ($first === NULL)
+      {
+         $first = 1;
+      }
+
+      if ($many === NULL)
+      {
+         $many = 10;
+      }
+
       $db = new Database;
-      $query = "(SELECT * FROM items ORDER BY created DESC LIMIT ".($first - 1).",{$many}) ORDER BY created DESC";
+      $first_entry = $first - 1;
+      $query = "(SELECT * FROM items ORDER BY created DESC LIMIT {$first_entry},{$many}) ORDER BY created DESC";
       $db->query($query);
       $db->execute();
       
       $result = $db->all();      
       
-      foreach ($result as $key => $value) {
+      foreach ($result as $key => $value)
+      {
          $item_id = $result[$key]['id'];
          $path = GALLERY . $item_id;
          
@@ -150,6 +164,9 @@ class Item_transfer {
 
    public function update_item($item_id)
    {
+      $return = array();
+      $msg = array();
+
       $db = new Database;
       $index = array(
             'quality',
@@ -158,7 +175,8 @@ class Item_transfer {
             'year',
             'description',
             'details',
-            'price'
+            'price',
+            'status'
       );
 
       $valid_index = array();
@@ -174,7 +192,7 @@ class Item_transfer {
          }
          else
          {
-            echo '</br>Missing index: ' . $key;  
+            $msg[] = "Missing index: $key";  
          }
       }
       
@@ -206,19 +224,61 @@ class Item_transfer {
          $db->bind(":id", $item_id);
          $db->execute();
 
-         echo '</br>Updated item number: "'.$item_id.'" in database.';
+         $msg[] = "Updated item number: {$item_id} in database.";
 
-         return $item_id;
       }
       catch(PDOException $e)
       {
-        echo $e->getMessage();
+        $msg[] = $e->getMessage();
       }
    
       if ($db->error) 
       {
-        echo "DB error: " . $db->error;
+        $msg[] = "DB error: {$db->error}";
       }
-      
+
+      $return['item_id'] = $item_id;
+      $return['msg'] = $msg;
+      return $return;
+   }
+
+   public function delete_item($item_id)
+   {
+      $return = array();
+      $msg = array();
+
+      try
+      {
+         $db = new Database;
+
+         $query =   "DELETE FROM items
+                     WHERE id = :id";
+
+         $db->query($query);
+         $db->bind(":id", $item_id);
+         $db->execute();
+         $success = $db->row_count();
+      }
+      catch(PDOException $e)
+      {
+         $msg[] = $e->getMessage();
+         $return['item_id'] = $item_id;
+         $return['msg'] = $msg;
+         return $return;
+      }
+   
+      if ($db->error) 
+      {
+        $msg[] = "DB error: {$db->error}";
+      }
+
+      if ($success >= 0)
+      {
+         $msg[] = "Item #{$item_id} deleted from DB.";
+      }
+
+      $return['item_id'] = $item_id;
+      $return['msg'] = $msg;
+      return $return;
    }
 }

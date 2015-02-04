@@ -3,9 +3,7 @@ require_once 'Token.php';
 require_once 'Database.php';
 require_once 'vendor/wideimage/WideImage.php';
 require_once 'Item_transfer.php';
-
-// Path to gallery
-define('GALLERY', '.' . DIRECTORY_SEPARATOR . 'gallery' . DIRECTORY_SEPARATOR);
+require_once '_filepath.php';
 
 class Image_transfer extends Item_transfer{
 
@@ -238,5 +236,43 @@ class Image_transfer extends Item_transfer{
          }
       }
       return "Image deleted, images sorted and renamed.";
+   }
+
+   public function delete_folder($item_id)
+   {      
+      $dir = GALLERY . $item_id;
+
+      try
+      {         
+         $files = new RecursiveIteratorIterator(
+             new RecursiveDirectoryIterator($dir, RecursiveDirectoryIterator::SKIP_DOTS),
+             RecursiveIteratorIterator::CHILD_FIRST
+         );
+
+         foreach ($files as $fileinfo)
+         {
+            $todo = ($fileinfo->isDir() ? 'rmdir' : 'unlink');
+
+            if ( !$todo($fileinfo->getRealPath()) )
+            {
+               throw new RuntimeException('Failed to delete file.');
+            }
+         }
+
+         if (!rmdir($dir))
+         {
+            throw new RuntimeException('Failed to delete folder.');
+         }
+      }
+      catch (RuntimeException $e) 
+      {
+         $msg[] = "Image upload error: {$e->getMessage()}";
+         $result['msg'] = $msg;
+         return $result;
+      }
+
+      $msg[] = "Image folder deleted.";
+      $result['msg'] = $msg;
+      return $result;
    }
 }

@@ -1,4 +1,7 @@
-<?php 
+<?php
+
+require_once '_class/Database.php';
+
 ?>
 
 <form action=""  method="post" enctype="multipart/form-data">
@@ -18,12 +21,21 @@
 </form>
 
 <?php
+$item_id = 299;
+$db = new Database;
+      $query = "  SELECT COUNT(*)
+                  FROM items
+                  WHERE id > $item_id ";
+      $db->query($query);
+      $db->execute();
+      $result = $db->single();
+      $count = $result['COUNT(*)'];
 
 // pre and print
 ?>
 <pre>
 <?php
-print_r($_FILES);
+print_r($count);
 ?>
 </pre>
 <?php

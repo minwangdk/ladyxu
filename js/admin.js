@@ -96,8 +96,10 @@ $(document).ready(function() {
       }
 
    });
+   
+   // Delete image
+   $('.img_order').on('click', function(e) {
 
-   $('.img_order').on('click', function(e){
       var img = parseInt($(this).text()) - 1;
       $(this).parent().remove();
       var data =  "item=" + item_id +
@@ -119,6 +121,40 @@ $(document).ready(function() {
          });
    });
 
+   $('button[name="reset"]').on('click', function(e){
 
+      return confirm("您确重置吗? Please confirm the reset.");
+
+   });
+
+   $('button[name="delete"]').on('click', function(e){
+
+      var r = confirm("确定删除吗? Please confirm the delete.");
+
+      if (r) {
+         var data =  "item=" + item_id;
+
+         $.ajax({
+            type: 'POST',
+            url: 'admin_delete_item.php',
+            // create callback php, add delete item method to item_transfer, refresh admin.php using no $_GET['item']
+            data: data,
+            error: function(xhr, status, error) {
+               // console.log(error.responseText);
+            },
+            success: function(xhr, status, error) {
+               // console.log(error.responseText);
+            }
+         })
+            .done(function( msg ) {
+               var parsed = JSON.parse( msg );
+               var status = parsed.status;  
+               window.location.replace(location.origin + location.pathname);
+               console.log(status);
+
+            });
+      }
+
+   });
 
 });

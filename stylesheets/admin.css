@@ -350,8 +350,7 @@ table {
   src: url(/ladyxu/stylesheets/fonts/champagne/cac_champagne-webfont.ttf) format('truetype'), url(/ladyxu/stylesheets/fonts/champagne/cac_champagne-webfont.woff) format('woff'), url(/ladyxu/stylesheets/fonts/champagne/cac_champagne-webfont.svg) format('svg'), url(/ladyxu/stylesheets/fonts/champagne/cac_champagne-webfont.eot) format('embedded-opentype');
 }
 
-/*
-@include font-face("Champagne", font-files(
+/*@include font-face("Champagne", font-files(
 "champagne/cac_champagne-webfont.ttf",
 "champagne/cac_champagne-webfont.woff",
 "champagne/cac_champagne-webfont.svg",
@@ -897,6 +896,24 @@ header[role=banner] nav ul a {
   *zoom: 1;
 }
 
+/* line 3, ../sass/partials/_admin_item_chooser.scss */
+#item_chooser img {
+  max-height: 80px;
+  max-width: 80px;
+}
+/* line 8, ../sass/partials/_admin_item_chooser.scss */
+#item_chooser td {
+  position: relative;
+}
+/* line 11, ../sass/partials/_admin_item_chooser.scss */
+#item_chooser td .item_number {
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  color: #05FA0C;
+  font-size: 1.5em;
+}
+
 /* line 1, ../sass/partials/_admin.scss */
 #small_img_box {
   position: relative;
@@ -928,7 +945,7 @@ header[role=banner] nav ul a {
   bottom: 3px;
   right: 3px;
   color: red;
-  font-size: 1em;
+  font-size: 1.5em;
 }
 
 /* line 7, ../../../../Users/Min/Desktop/Programming/compass.app/lib/ruby/compass_extensions/compass-h5bp-0.1.1/stylesheets/h5bp/_helpers.scss */

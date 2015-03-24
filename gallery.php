@@ -24,7 +24,6 @@ require_once './_class/Gallery_page.php';
 <body>
 <?php
 require_once './partial_php/_banner.php';
-require_once './partial_php/_category_bar.php';
 $item_transfer = new Item_transfer;
 $gallery_page = new Gallery_page;
 

@@ -7,11 +7,11 @@ class Gallery_page
    public function controls()
    {
       $controls = 
-  "   <div id='controls'>
+  "<div id='controls'>
       <div id='pages'></div>
    </div>";
 
-      return $controls;
+      return "   " . $controls;
    }
 
    public function item_browser($items, $items_per_row = 4)
